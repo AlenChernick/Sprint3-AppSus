@@ -1,0 +1,21 @@
+.app-page {
+  text-align: center;
+}
+
+.hero-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  background: linear-gradient(to right, #86fde8, #acb6e5);
+  height: 82vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-title {
+  font-size: 3rem;
+}

@@ -1,3 +1,5 @@
+import { eventBus } from '../../../services/eventBus.service.js'
+
 export const noteText = {
     template: `
     <section class="note-template note-text">
@@ -47,17 +49,17 @@ export const noteTodos = {
             if (!this.note.info.todos) this.note.info.todos = []
             this.note.info.todos.push(todo)
             const newNote = this.createNoteCopy()
-            this.$emit(eventAddNewTodo, newNote)
+            eventBus.emit('eventAddTodo', newNote)
             this.nextTodo = ''
         },
         removeTodo(idx) {
             const newNote = this.createNoteCopy()
-            this.$emit(eventRemoveTodo, newNote, idx)
+            eventBus.emit('eventRemoveTodo', newNote, idx)
         },
         toggleTodoFinshed(todoIdx) {
             this.note.info.todos[todoIdx].isFinished = !this.note.info.todos[todoIdx].isFinished
             const newNote = this.createNoteCopy()
-            this.$emit(eventToggleTodo, newNote)
+            eventBus.emit('eventToggleTodoComplete', newNote)
         },
         createNoteCopy() {
             return JSON.parse(JSON.stringify(this.note))
