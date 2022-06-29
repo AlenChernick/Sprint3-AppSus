@@ -22,5 +22,15 @@ function emit(eventName, data) {
 // we got 2 funcs on and emit
 export const eventBus = { on, emit };
 
+export function eventRemoveTodo(newNote, idx) {
+    emit('eventRemoveTodo', newNote, idx)
+}
 
 
+export function eventAddTodo(newNote) {
+    emit(newNote)
+}
+
+export function eventToggleTodoComplete(newNote) {
+    emit(newNote)
+} 

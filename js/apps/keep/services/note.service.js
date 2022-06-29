@@ -1,5 +1,6 @@
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/storage.service.js'
+import { asyncStorageService } from '../../../services/async-storage.service.js'
 
 const NOTE_KEY = 'notes_db'
 const notesDb = storageService.load(NOTE_KEY) || _createDefaultNote()
@@ -8,6 +9,7 @@ const notesDb = storageService.load(NOTE_KEY) || _createDefaultNote()
 export const noteService = {
     getNotes,
     createNote,
+    removeTodo,
 }
 
 
@@ -26,16 +28,35 @@ function createNote(noteInfo) {
             txt: noteInfo.info.txt,
             img: noteInfo.info.img,
             video: noteInfo.info.video,
-            todo: noteInfo.info.todos,
+            todos: noteInfo.info.todos,
         },
         style: {
-            backgroundColor: '#fdfdfd'
+            backgroundColor: utilService.getRandomColor()
         }
     }
     notesDb.unshift(note)
     storageService.store(NOTE_KEY, notesDb)
     return Promise.resolve()
 }
+
+function removeTodo(note, todoIdx) {
+    note.info.todos.splice(todoIdx, 1)
+
+    const idx = _getNoteByIndex(note.id)
+    notesDb.splice(idx, 1, note)
+
+    storageService.store(NOTE_KEY, notesDb)
+    let notes = storageService.load(NOTE_KEY)
+    return Promise.resolve(notes)
+}
+
+function _getNoteByIndex(noteId) {
+    const idx = notesDb.findIndex(note => note.id === noteId)
+    return idx
+}
+
+
+
 
 function _createDefaultNote() {
     const notes = [

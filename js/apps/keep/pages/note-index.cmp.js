@@ -1,6 +1,7 @@
 import { noteService } from '../services/note.service.js'
 import createNote from '../cmps/note-create.cmp.js'
 import noteList from '../cmps/note-list.cmp.js'
+import { eventBus } from '../../../services/eventBus.service.js'
 
 
 export default {
@@ -19,9 +20,16 @@ export default {
         noteService.getNotes()
             .then(notes => {
                 this.notes = notes
+                console.log(notes);
             })
+        eventBus.on('eventRemoveTodo', this.removeTodo)
     },
-    methods: {},
+    methods: {
+        removeTodo(note) {
+            noteService.removeTodo(note)
+                .then((notes) => this.notes = notes)
+        }
+    },
     computed: {},
     unmounted() { },
     components: {
