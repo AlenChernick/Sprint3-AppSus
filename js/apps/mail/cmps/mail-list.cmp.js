@@ -3,7 +3,7 @@ import mailPreview from "../cmps/mail-preview.cmp.js"
 export default {
   props: ["emails"],
   template: `
- <section>
+ <section class="email-list-container">
     <ul>
         <li v-for="email in emails" class="email-line" >
            <mail-preview :email="email"  ></mail-preview>
@@ -21,13 +21,10 @@ export default {
       selectedEmailId: null,
     }
   },
-  created() {},
+  created() {
+  },
   methods: {
-    //     selectEmail(emailId){
-    //         console.log('dsf');
-    //         this.selectedEmailId === emailId
-    //         this.isMailShowSammery=true
-    //  }
+ 
   },
   computed: {},
   unmounted() {},

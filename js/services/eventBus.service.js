@@ -1,3 +1,4 @@
+
 //  2 parmas event name and a listener its a func
 function on(eventName, listener) {
     //              a fun that gets the data we send
@@ -19,8 +20,17 @@ function emit(eventName, data) {
     window.dispatchEvent(new CustomEvent(eventName, { detail: data }));
 }
 
+
+//Calling: mailExtend,
+export function deleteMail(mailId) {
+    emit('deletedMail', mailId)
+}
+
+
 // we got 2 funcs on and emit
 export const eventBus = { on, emit };
+
+
 
 
 

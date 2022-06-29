@@ -14,6 +14,7 @@
 @import '/css/cmps/main-content.css';
 
 /* MAIL APP */
+@import 'apps/email/email-list.css';
 @import 'apps/email/email-preview.css';
 @import 'apps/email/mail-side-bar.css';
 

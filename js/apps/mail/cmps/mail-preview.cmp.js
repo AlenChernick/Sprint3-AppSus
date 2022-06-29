@@ -1,4 +1,4 @@
-import mailOpenSammery from "../cmps/mail-open-sammery.js"
+import mailExtend from "./mail-extend.js"
 
 export default {
   props: ["email"],
@@ -13,13 +13,13 @@ export default {
        <div>{{email.body}}(hard coded for now) </div>
        <div> {{email.createdAt}} </div>
          </div>
-      <mail-open-sammery v-if="isExtend"  :email='email' ></mail-open-sammery>
+      <mail-extend v-if="isExtend"  :email='email' ></mail-extend>
 
 
  </section>
 `,
   components: {
-    mailOpenSammery,
+    mailExtend,
   },
 
   data() {
