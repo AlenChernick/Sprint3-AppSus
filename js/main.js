@@ -1,4 +1,5 @@
 const { createApp } = Vue
+import { router } from './router.js'
 
 const options = {
     template: `
@@ -13,4 +14,5 @@ const options = {
 };
 
 const app = createApp(options)
+app.use(router)
 app.mount('#app')
