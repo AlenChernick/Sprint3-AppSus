@@ -2,12 +2,10 @@ import { mailService } from "../services/mail.service.js"
 import mailList from "../cmps/mail-list.cmp.js"
 import mailSideBar from "../cmps/mail-side-bar.cmp.js"
 
-
 export default {
   template: `
 <section>
 
-<p>Mail index</p>
 <div class="mail-main-conteiner flex flex-row">
   <mail-side-bar :emails="emails"></mail-side-bar>
 <mail-list :emails="emails"></mail-list>
@@ -21,13 +19,11 @@ export default {
   },
   data() {
     return {
-      emails:null,
+      emails: null,
     }
   },
   created() {
-    mailService.getMails().then(emails => 
-        
-        this.emails = emails)
+    mailService.getMails().then((emails) => (this.emails = emails))
   },
   methods: {},
   computed: {},
