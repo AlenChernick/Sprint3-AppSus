@@ -7,7 +7,7 @@ export default {
     <nav class="app-nav">
         <router-link to="/" class="nav-home">Home</router-link>
         <router-link to="/mail" class="nav-mail">Mail</router-link>
-        <router-link to="/keep" class="nav-keep">Kepp</router-link>
+        <router-link to="/keep" class="nav-keep">Keep</router-link>
     </nav>
  </header>
 `,

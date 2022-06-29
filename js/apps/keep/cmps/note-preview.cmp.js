@@ -1,4 +1,4 @@
-import { noteText, noteImg } from '../cmps/note-template.cmp.js'
+import { noteText, noteImg, noteTodos, noteVideo } from '../cmps/note-template.cmp.js'
 
 export default {
     props: ['note'],
@@ -26,5 +26,7 @@ export default {
     components: {
         noteText,
         noteImg,
+        noteTodos,
+        noteVideo,
     },
 };

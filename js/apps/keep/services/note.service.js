@@ -1,7 +1,7 @@
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/storage.service.js'
 
-const NOTE_KEY = 'notes'
+const NOTE_KEY = 'notes_db'
 const notesDb = storageService.load(NOTE_KEY) || _createDefaultNote()
 
 
@@ -70,11 +70,11 @@ function _createDefaultNote() {
             noteType: 'todos',
             isPinned: false,
             info: {
-                title: 'groceries:',
+                title: 'Market List:',
                 todos: [
-                    { txt: 'milk', isComplete: true, doneAt: null },
-                    { txt: 'toothpaste', isComplete: false, doneAt: 187111111 },
-                    { txt: 'bamba', isComplete: false, doneAt: 187111 }
+                    { txt: 'Buy Bisli', isComplete: true, doneAt: null },
+                    { txt: 'Buy KornFlex', isComplete: false, doneAt: null },
+                    { txt: 'Buy Bamba', isComplete: false, doneAt: null }
                 ]
             },
             style: {
@@ -87,7 +87,7 @@ function _createDefaultNote() {
             noteType: 'video',
             isPinned: false,
             info: {
-                video: 'c2ScKSMGvtc',
+                video: '0qQZqT3GHQE',
             },
             style: {
                 backgroundColor: '#fdfdfd'
@@ -140,13 +140,13 @@ function _createDefaultNote() {
             info: {
                 title: 'Sprint:',
                 todos: [
-                    { txt: 'Todos CRUD', isComplete: true, doneAt: null },
-                    { txt: 'Change Note color', isComplete: true, doneAt: 187111111 },
-                    { txt: 'Add Sound template', isComplete: false, doneAt: 187111 }
+                    { txt: 'Finish the Sprint!!!', isComplete: true, doneAt: null },
+                    { txt: 'Help Alon with Mail', isComplete: true, doneAt: null },
+                    { txt: 'Make layout', isComplete: false, doneAt: null }
                 ]
             },
             style: {
-                backgroundColor: '#ffcc88'
+                backgroundColor: '#ffcb88'
             }
         },
         {
@@ -167,7 +167,7 @@ function _createDefaultNote() {
             noteType: 'txt',
             isPinned: true,
             info: {
-                txt: 'Yuval Wedding 1.9'
+                txt: 'Yuval Wedding 1.9.22'
             },
             style: {
                 backgroundColor: '#ddbbff'
@@ -179,7 +179,7 @@ function _createDefaultNote() {
             noteType: 'video',
             isPinned: false,
             info: {
-                video: 'pbMwTqkKSps',
+                video: 'q9Fj3Ss1Uyo',
             },
             style: {
                 backgroundColor: '#ffff88'

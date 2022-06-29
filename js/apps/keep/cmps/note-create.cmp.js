@@ -4,7 +4,7 @@ export default {
     template: `
     <section class="create-note">
         <div class="note-create-container">
-            <input class="note-txt-input" v-model="newVal" @keyup.enter="createNote" >
+            <input class="note-txt-input" v-model="newVal" @keyup.enter="createNote" placeholder="Write ur Note.." >
         </div>
     </section>
     `,
