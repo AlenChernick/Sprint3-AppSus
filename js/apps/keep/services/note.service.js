@@ -45,7 +45,7 @@ function _createDefaultNote() {
             noteType: 'txt',
             isPinned: false,
             info: {
-                txt: 'call Esteban Jimenez'
+                txt: 'Alen the King'
             },
             style: {
                 backgroundColor: '#ffff88'
@@ -57,8 +57,8 @@ function _createDefaultNote() {
             noteType: 'img',
             isPinned: false,
             info: {
-                img: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Avatar_flower.png',
-                title: 'cool artwork'
+                img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR347srFXDNqK4xYjJj51Swzlv89jUnjFSkVw&usqp=CAU',
+                title: 'Flowers'
             },
             style: {
                 backgroundColor: '#fdfdfd'
@@ -100,7 +100,7 @@ function _createDefaultNote() {
             noteType: 'txt',
             isPinned: false,
             info: {
-                txt: 'password: aligator_3'
+                txt: 'password: Kings___@2'
             },
             style: {
                 backgroundColor: '#ccff99'
@@ -113,7 +113,7 @@ function _createDefaultNote() {
             noteType: 'img',
             isPinned: false,
             info: {
-                img: 'https://media.giphy.com/media/kz6cm1kKle2MYkHtJF/giphy.gif',
+                img: 'https://c.tenor.com/_VZMHoUXhI4AAAAC/sasuke-thinking.gif',
             },
             style: {
                 backgroundColor: '#ffcc88'
@@ -125,8 +125,8 @@ function _createDefaultNote() {
             noteType: 'img',
             isPinned: false,
             info: {
-                img: 'https://main-designyoutrust.netdna-ssl.com/wp-content/uploads/2018/09/Bugaboos.jpg',
-                title: 'spain'
+                img: 'https://cdn2.beachdeals.com/blog/storage/app/media/www_beachdeals_com/wp-blog/2018/02/BB-5-hip-small-towns-in-Hawaii-EDITONLY-Hawi-IHVB_0303.tif-2.jpg',
+                title: 'Hawaii'
             },
             style: {
                 backgroundColor: '#ddbbff'
@@ -155,7 +155,7 @@ function _createDefaultNote() {
             noteType: 'img',
             isPinned: false,
             info: {
-                img: 'https://media.giphy.com/media/1wqZ9MmXDPWLPuwwYI/giphy.gif',
+                img: 'https://media2.giphy.com/media/SggILpMXO7Xt6/giphy.gif?cid=ecf05e47pbc4atopra8j3459nczfdk38t667ho3ked30smdq&rid=giphy.gif&ct=g',
             },
             style: {
                 backgroundColor: '#ff8888'
@@ -167,7 +167,7 @@ function _createDefaultNote() {
             noteType: 'txt',
             isPinned: true,
             info: {
-                txt: 'Noa wedding 08.03'
+                txt: 'Yuval Wedding 1.9'
             },
             style: {
                 backgroundColor: '#ddbbff'
