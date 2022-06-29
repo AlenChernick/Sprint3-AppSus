@@ -7,9 +7,9 @@ export default {
      
      <!-- <div class="flex flex-row space-between email-preview"> -->
     <div class="email-preview">
-       <div> {{email.name}} </div>
-       <div> {{email.title}} </div>
-       <div> small text(hard coded for now) </div>
+       <div v-bind:class='ifReadColor'> {{email.name}} </div>
+       <div v-bind:class='ifReadColor'> {{email.subject}} </div>
+       <div>{{email.body}}(hard coded for now) </div>
        <div> {{email.createdAt}} </div>
    </div>
 
@@ -22,7 +22,19 @@ export default {
     return {}
   },
   created() {},
-  methods: {},
-  computed: {},
+  methods: {
+    mailExtend(mailId){
+        console.log('mail-rev');
+        this.$emit('extend',mailId)
+    }
+  },
+  computed: {
+    ifReadColor() {
+        return {
+          "reded":  this.email.isRead === true,
+          "un-readed":  this.email.isRead === false,
+        }
+      },
+  },
   unmounted() {},
 }
