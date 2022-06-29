@@ -16,28 +16,13 @@ export default {
   },
   data() {
     return {
-      emails: [
-        {
-          name: "alen",
-          title:'Lets start!',
-          txt: "hay there!!!",
-          createdAt: " date.now()",
-        },
-        {
-          name: "alon",
-          title:'need help??',
-          txt: "shity day!!!",
-          createdAt: " date.now()",
-        },
-      ],
+      emails:null,
     }
   },
   created() {
-    // this.emails = {
-    //   name: "alen",
-    //   txt: "hay there!!!",
-    //   date: " date.now()",
-    // }
+    mailService.getMails().then(emails => 
+        
+        this.emails = emails)
   },
   methods: {},
   computed: {},

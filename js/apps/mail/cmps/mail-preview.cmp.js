@@ -4,8 +4,9 @@ export default {
   template: `
  <section>
 
-
-    <div class="flex flex-row space-between">
+     
+     <!-- <div class="flex flex-row space-between email-preview"> -->
+    <div class="email-preview">
        <div> {{email.name}} </div>
        <div> {{email.title}} </div>
        <div> small text(hard coded for now) </div>
