@@ -20,14 +20,20 @@ export default {
         noteService.getNotes()
             .then(notes => {
                 this.notes = notes
-                console.log(notes);
             })
         eventBus.on('eventRemoveTodo', this.removeTodo)
+        eventBus.on('eventAddNote', this.addNote)
     },
     methods: {
-        removeTodo(note) {
-            noteService.removeTodo(note)
-                .then((notes) => this.notes = notes)
+        // removeTodo(noteId) {
+        //     noteService.remove(noteId).then(() => {
+        //         const idx = this.notes.findIndex(note => note.id === noteId)
+        //         this.notes.splice(idx, 1)
+        //     })
+        // },
+        addNote(note) {
+            noteService.addNote(note)
+                .then((note) => this.notes.unshift(note))
         }
     },
     computed: {},

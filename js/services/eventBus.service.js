@@ -36,9 +36,17 @@ export function eventRemoveTodo(newNote, idx) {
 
 
 export function eventAddTodo(newNote) {
-    emit(newNote)
+    emit('eventAddTodo', newNote)
 }
 
 export function eventToggleTodoComplete(newNote) {
-    emit(newNote)
-} 
+    emit('eventToggleTodoComplete', newNote)
+}
+
+export function eventUpdateTodo(newNote) {
+    emit('eventUpdateTodo', newNote)
+}
+
+export function eventAddNote(newNote) {
+    emit('eventAddNote', newNote)
+}

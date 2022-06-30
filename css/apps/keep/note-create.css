@@ -1,0 +1,14 @@
+.note-txt-input {
+  width: 35rem;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.note-create-btn {
+  font-size: 1.5rem;
+  border: none;
+  position: relative;
+  right: 9.5rem;
+  background-color: white;
+  cursor: pointer;
+}

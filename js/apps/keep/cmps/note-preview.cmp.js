@@ -3,8 +3,8 @@ import { noteText, noteImg, noteTodos, noteVideo } from '../cmps/note-template.c
 export default {
     props: ['note'],
     template: `
-  <section class="note-preview">
-        <div class="note-type-container" :style="{backgroundColor: noteBackgroundColor}">
+  <section v-if="note" class="note-preview">
+        <div class="note-type-container" :style="noteBackgroundColor">
             <component :is="note.type"
             :class="note.type"
             :note="note">
@@ -19,7 +19,7 @@ export default {
     methods: {},
     computed: {
         noteBackgroundColor() {
-            return this.note.style.backgroundColor
+            return { backgroundColor: this.note.style.backgroundColor }
         }
     },
     unmounted() { },

@@ -9,7 +9,8 @@ const notesDb = storageService.load(NOTE_KEY) || _createDefaultNote()
 export const noteService = {
     getNotes,
     createNote,
-    removeTodo,
+    addNote,
+    remove
 }
 
 
@@ -19,7 +20,6 @@ function getNotes() {
 
 function createNote(noteInfo) {
     const note = {
-        id: utilService.makeId(),
         type: noteInfo.type,
         noteType: noteInfo.noteType,
         isPinned: noteInfo.isPinned,
@@ -31,7 +31,7 @@ function createNote(noteInfo) {
             todos: noteInfo.info.todos,
         },
         style: {
-            backgroundColor: utilService.getRandomColor()
+            backgroundColor: '#eee'
         }
     }
     notesDb.unshift(note)
@@ -39,23 +39,41 @@ function createNote(noteInfo) {
     return Promise.resolve()
 }
 
-function removeTodo(note, todoIdx) {
-    note.info.todos.splice(todoIdx, 1)
 
-    const idx = _getNoteByIndex(note.id)
-    notesDb.splice(idx, 1, note)
-
-    storageService.store(NOTE_KEY, notesDb)
-    let notes = storageService.load(NOTE_KEY)
-    return Promise.resolve(notes)
+function addNote(note) {
+    const newNote = {
+        type: note.type,
+        noteType: note.noteType,
+        info: {
+            img: note.info.img || '',
+            title: note.info.title || '',
+            video: note.info.video || '',
+            txt: note.info.txt || '',
+            todos: note.info.todos || null,
+        },
+        style: {
+            backgroundColor: '#eee'
+        }
+    }
+    return save(newNote)
 }
 
-function _getNoteByIndex(noteId) {
-    const idx = notesDb.findIndex(note => note.id === noteId)
-    return idx
+function query() {
+    return asyncStorageService.query(NOTE_KEY)
 }
 
+function remove(noteId) {
+    return asyncStorageService.remove(NOTE_KEY, noteId)
+}
 
+function get(noteId) {
+    return asyncStorageService.get(NOTE_KEY, noteId)
+}
+
+function save(note) {
+    if (note.id) return asyncStorageService.put(NOTE_KEY, note)
+    else return asyncStorageService.post(NOTE_KEY, note)
+}
 
 
 function _createDefaultNote() {

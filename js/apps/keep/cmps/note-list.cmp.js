@@ -4,7 +4,9 @@ export default {
     props: ['notes'],
     template: `
     <section class="note-list">
-    <note-preview v-for="note in notes" :note="note" :key="note.id"></note-preview>
+        <div class="note-preview-container" v-for="note in notes" :key="note.id">
+            <note-preview :note="note" ></note-preview>
+        </div>
     </section>
     `,
     components: {

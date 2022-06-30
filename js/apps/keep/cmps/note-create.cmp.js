@@ -1,10 +1,23 @@
 import { noteService } from '../services/note.service.js'
+import { eventAddNote } from '../../../services/eventBus.service.js'
 
 export default {
     template: `
     <section class="create-note">
         <div class="note-create-container">
-            <input class="note-txt-input" v-model="newVal" @keyup.enter="createNote" placeholder="Write ur Note.." >
+            <input class="note-txt-input" v-model="newVal" :placeholder="placeholderText" @keyup.enter="createNote">
+                <button class="note-create-btn note-text-btn" @click="changeNoteType('noteText')">
+                        <i class="note-create-btn-icon far fa-comment"></i>
+                    </button>
+                    <button class="note-create-btn note-img-btn" @click="changeNoteType('noteImg')">
+                        <i class="note-create-btn-icon far fa-image"></i>
+                    </button>
+                    <button class="note-create-btn note-video-btn" @click="changeNoteType('noteVideo')">
+                        <i class="note-create-btn-icon fab fa-youtube"></i>
+                    </button>
+                    <button class="note-create-btn note-todo-btn" @click="changeNoteType('noteTodos')">
+                        <i class="note-create-btn-icon fas fa-list-ul"></i>
+                    </button>
         </div>
     </section>
     `,
@@ -36,13 +49,44 @@ export default {
             }
             else noteInfo[this.note.noteType] = this.newVal
             newNote.info = noteInfo
-            noteService.createNote(newNote)
-                .then(() => {
-                    this.newVal = ''
-                })
+            this.newVal = ''
+            eventAddNote(newNote)
+        },
 
+        changeNoteType(newType) {
+            this.note.type = newType
+            this.note.noteType = this.infoType
         }
     },
-    computed: {},
+    computed: {
+        infoType() {
+            switch (this.note.type) {
+                case 'noteType':
+                    return 'txt'
+                case 'noteImg':
+                    return 'img'
+                case 'noteVideo':
+                    return 'noteVideo'
+                case 'noteTodos':
+                    return 'todos'
+                default:
+                    return 'txt'
+            }
+        },
+
+        placeholderText() {
+            if (this.note.type === 'noteText') {
+                return 'Write Your Note...'
+            } else if (this.note.type === 'noteImg') {
+                return 'Enter Image Url'
+            } else if (this.note.type === 'noteVideo') {
+                return 'Enter Youtube Video Url'
+            } else if (this.note.type === 'noteTodos') {
+                return 'Enter Todo List Title'
+            }
+        },
+    },
+
+
     unmounted() { },
 };

@@ -3,6 +3,7 @@ import { eventRemoveTodo, eventAddTodo, eventToggleTodoComplete } from '../../..
 export const noteText = {
     template: `
     <section class="note-template note-text">
+        <!-- <pre>{{note}}</pre> -->
         <p class="info-txt">{{note.info.txt}}</p>
     </section>
     `,
@@ -43,7 +44,7 @@ export const noteTodos = {
     methods: {
         addTodo() {
             const todo = {
-                text: this.nextTodo,
+                txt: this.nextTodo,
                 isFinished: false,
             }
             if (!this.note.info.todos) this.note.info.todos = []
@@ -56,10 +57,10 @@ export const noteTodos = {
             const newNote = this.createNoteCopy()
             eventRemoveTodo(newNote, idx)
         },
-        toggleTodoFinshed(todoIdx) {
+        toggleTodoFinished(todoIdx) {
             this.note.info.todos[todoIdx].isFinished = !this.note.info.todos[todoIdx].isFinished
             const newNote = this.createNoteCopy()
-            eventBus.emit('eventToggleTodoComplete', newNote)
+            eventToggleTodoComplete(newNote)
         },
         createNoteCopy() {
             return JSON.parse(JSON.stringify(this.note))
