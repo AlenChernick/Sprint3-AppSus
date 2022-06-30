@@ -1,4 +1,5 @@
 import mailExtend from "./mail-extend.js"
+import { updateIsRead } from "../../../services/eventBus.service.js"
 
 export default {
   props: ["email"],
@@ -7,7 +8,7 @@ export default {
 
      
      <!-- <div class="flex flex-row space-between email-preview"> -->
-    <div class="email-preview"   @click="isExtend=!isExtend">
+    <div class="email-preview"   @click="isExtend=!isExtend, onRemoveRead(email.id)">
        <div v-bind:class='ifReadColor'> {{email.name}} </div>
        <div v-bind:class='ifReadColor'> {{email.subject}} </div>
        <div>{{email.body}}(hard coded for now) </div>
@@ -28,7 +29,12 @@ export default {
     }
   },
   created() {},
-  methods: {},
+  methods: {
+    onRemoveRead(emailId){
+      updateIsRead(emailId)}
+
+
+  },
   computed: {
     ifReadColor() {
       return {
@@ -39,6 +45,15 @@ export default {
     onExtend() {
       return true
     },
+  },
+  watch:{
+    // isExtend(){
+    //   if(isExtend){
+    //     updateIsRead(this.email.id)
+    //   }
+    // }
+
+
   },
   unmounted() {},
 }

@@ -11,7 +11,8 @@ export default {
      <button>Full</button>
 </div>
 
-<div ><span style="font-weight:600;font-size:0.9rem;">{{email.name}}</span> <span style="color:gray;font-size:0.8rem;"><{{email.name}}@gmail.com></span></div>
+<div ><span style="font-weight:600;font-size:0.9rem;">{{email.name}}</span> 
+<span style="color:gray;font-size:0.8rem;"><{{email.name}}@gmail.com></span></div>
 <br>
 <div>{{email.body}}</div>
     </div>
