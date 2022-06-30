@@ -26,6 +26,8 @@ function emit(eventName, data) {
 // we got 2 funcs on and emit
 export const eventBus = { on, emit };
 
+
+
 export function eventRemoveTodo(newNote, idx) {
     emit('eventRemoveTodo', newNote, idx)
 }
@@ -46,7 +48,6 @@ export function eventUpdateTodo(newNote) {
 export function eventAddNote(newNote) {
     emit('eventAddNote', newNote)
 }
-emit(newNote)
 
 
 
