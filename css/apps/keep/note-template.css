@@ -27,7 +27,7 @@
 }
 
 .todo-remove-btn:hover {
-  color: rgb(16, 241, 102);
+  color: rgba(255, 0, 0, 0.725);
 }
 
 .next-todo-input {
