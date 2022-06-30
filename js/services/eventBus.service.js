@@ -21,10 +21,6 @@ function emit(eventName, data) {
 }
 
 
-//Calling: mailExtend,
-export function deleteMail(mailId) {
-    emit('deletedMail', mailId)
-}
 
 
 // we got 2 funcs on and emit
@@ -50,3 +46,28 @@ export function eventUpdateTodo(newNote) {
 export function eventAddNote(newNote) {
     emit('eventAddNote', newNote)
 }
+emit(newNote)
+
+
+
+
+
+
+
+
+
+////////////////EMAIL EVENT BUS
+//Calling: mailExtend,
+export function deleteMail(mailId) {
+    emit('deletedMail', mailId)
+}
+
+export function updateIsRead(mailId) {
+    emit('updateIsRead', mailId)
+}
+
+export function newMail() {
+    console.log('event busd')
+    emit('newMail')
+}
+
