@@ -13,10 +13,14 @@ export const mailService = {
   removeEmail,
   updateIsRead,
   SendMail,
+  getSendedMails
 }
-
 function getMails() {
   return Promise.resolve(mails)
+}
+function getSendedMails
+() {
+  return Promise.resolve(sendedMails)
 }
 
 function removeEmail(emailId) {
@@ -38,27 +42,19 @@ function updateIsRead(emailId) {
   return newArr
 }
 
-function SendMail(newMail) {
-  newMail.id = utilService.makeId()
-  // isRead: false,
-  // sendedMails.unshift(newMail)
-  // storageService.store(SEND_MAIL_KEY, sendedMails)
-  mails.push(newMail)
-    storageService.store(SEND_MAIL_KEY, mails)
-   return storageService.load(SEND_MAIL_KEY)
-      // return Promise.resolve(emailsDB)
+function SendMail(newSendedMail) {
+  return save(newSendedMail)
 }
 
-// function save(car) {
-//   if (car.id) return storageService.put(CARS_KEY, car)
-//   else return storageService.post(CARS_KEY, car)
-
-//   // car.id = utilService.makeId();
-//   // const cars = query();
-//   // cars.push(car);
-//   // utilService.saveToStorage(CARS_KEY, cars);
-//   // return car;
-// }
+function save(newSendedMail) {
+  // if (newSendedMail.id) return asyncStorageService.put(SEND_MAIL_KEY, newSendedMail)
+   return asyncStorageService.post(SEND_MAIL_KEY, newSendedMail)
+  // car.id = utilService.makeId();
+  // const cars = query();
+  // cars.push(car);
+  // utilService.saveToStorage(CARS_KEY, cars);
+  // return car;
+}
 
 function _createMails() {
   const genericMails = [

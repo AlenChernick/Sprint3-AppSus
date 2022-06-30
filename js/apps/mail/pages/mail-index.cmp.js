@@ -73,7 +73,8 @@ export default {
         <button  class="send-btn"  @click="onSendMail">Send</button>
 
         <!-- <button type="submit" class="send-btn">Send</button>  -->
-        <button class="garbage-btn">delete</button>
+        <button class="garbage-btn"  @click="onCancelMail">delete</button>
+        
       </div>
     </form>
   </div>
@@ -92,7 +93,6 @@ export default {
       sendendEmails:null,
       newMailModl: false,
       mailToSend: {
-        id:null,
         from: "me",
         to: null,
         cc: null,
@@ -105,6 +105,8 @@ export default {
   },
   created() {
     mailService.getMails().then((emails) => (this.emails = emails))
+    mailService.getSendedMails().then((sendedMails) => (this.sendendEmails = sendedMails))
+
     eventBus.on("deletedMail", this.onDeleteMail) //iniialize event listener
     eventBus.on("updateIsRead", this.updateIsRead) //iniialize event listener
     eventBus.on("newMail", this.newMail) //iniialize event listener
@@ -132,15 +134,13 @@ export default {
       this.newMailModl = true
     },
     onSendMail() {
-      
       this.newMailModl = !this.newMailModl
-      mailService.SendMail(this.mailToSend).then(sendedMails=> {this.sendendEmails=sendedMails
-        console.log(this.sendendEmails )})
-      // console.log( this.sendendEmails);
-      // console.log(this.sendedEmails);
-      
-
+      if(!this.mailToSen.to || !this.mailToSen.subject ) return//this part invoke vue Unhandled error
+      mailService.SendMail(this.mailToSend).then(sendedMails=> this.sendendEmails.push(sendedMails) )
     },
+    onCancelMail(){
+      this.newMailModl = !this.newMailModl
+    }
   },
   computed: {},
   unmounted() {},
