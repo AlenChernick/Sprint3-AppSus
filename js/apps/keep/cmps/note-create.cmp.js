@@ -1,4 +1,4 @@
-import { noteService } from '../services/note.service.js'
+// import { noteService } from '../services/note.service.js'
 import { eventAddNote } from '../../../services/eventBus.service.js'
 
 export default {

@@ -24,6 +24,7 @@
 @import 'apps/keep/note-preview.css';
 @import 'apps/keep/note-list.css';
 @import 'apps/keep/note-create.css';
+@import 'apps/keep/note-menu.css';
 
 /* MEDIA QUERIES */
 @import '/css/mq/mq.css';

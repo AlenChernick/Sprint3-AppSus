@@ -5,7 +5,7 @@ export default {
     template: `
     <section class="note-list">
         <div class="note-preview-container" v-for="note in notes" :key="note.id">
-            <note-preview :note="note" ></note-preview>
+            <note-preview :note="note"></note-preview>
         </div>
     </section>
     `,

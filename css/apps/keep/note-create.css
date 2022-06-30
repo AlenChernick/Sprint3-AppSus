@@ -1,7 +1,8 @@
 .note-txt-input {
   width: 35rem;
-  padding: 0.5rem;
+  padding: 0.7rem 1rem;
   font-size: 1.5rem;
+  margin-inline-start: 7.5rem;
 }
 
 .note-create-btn {
@@ -11,4 +12,22 @@
   right: 9.5rem;
   background-color: white;
   cursor: pointer;
+  color: black;
+  transition: color 0.3s;
+}
+
+.note-text-btn:hover {
+  color: rgba(50, 205, 50, 0.671);
+}
+
+.note-img-btn:hover {
+  color: rgba(0, 153, 255, 0.671);
+}
+
+.note-video-btn:hover {
+  color: rgba(255, 0, 0, 0.73);
+}
+
+.note-todo-btn:hover {
+  color: rgba(255, 225, 0, 0.73);
 }

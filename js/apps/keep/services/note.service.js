@@ -10,7 +10,8 @@ export const noteService = {
     getNotes,
     createNote,
     addNote,
-    remove
+    remove,
+    togglePinnedNote,
 }
 
 
@@ -56,6 +57,12 @@ function addNote(note) {
         }
     }
     return save(newNote)
+}
+
+function togglePinnedNote(noteId) {
+    const note = notesDb.find(note => note.id === noteId)
+    note.isPinned = !note.isPinned
+    return save(note)
 }
 
 function query() {

@@ -28,36 +28,37 @@ export const eventBus = { on, emit };
 
 
 
-export function eventRemoveTodo(newNote, idx) {
-    emit('eventRemoveTodo', newNote, idx)
-}
 
+// NOTE EVENT //
+// export function eventRemoveTodo(newNote, idx) {
+//     emit('eventRemoveTodo', newNote, idx)
+// }
+
+// export function eventToggleTodoComplete(newNote) {
+//     emit('eventToggleTodoComplete', newNote)
+// }
 
 export function eventAddTodo(newNote) {
     emit('eventAddTodo', newNote)
-}
-
-export function eventToggleTodoComplete(newNote) {
-    emit('eventToggleTodoComplete', newNote)
-}
-
-export function eventUpdateTodo(newNote) {
-    emit('eventUpdateTodo', newNote)
 }
 
 export function eventAddNote(newNote) {
     emit('eventAddNote', newNote)
 }
 
+export function eventDeleteNote(noteId) {
+    emit('eventDeleteNote', noteId)
+}
+
+export function eventPinNote(noteId) {
+    emit('eventPinNote', noteId)
+}
 
 
 
 
 
-
-
-
-////////////////EMAIL EVENT BUS
+// EMAIL EVENTS //
 //Calling: mailExtend,
 export function deleteMail(mailId) {
     emit('deletedMail', mailId)
