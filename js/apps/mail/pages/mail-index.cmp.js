@@ -70,10 +70,10 @@ export default {
         </textarea>
       </div>
       <div class="send-delete-row flex space-between">
-        <button  class="send-btn"  @click="onSendMail">Send</button>
+        <div  class="send-btn"  @click="onSendMail"><i class="fa-solid fa-paper-plane"></i></i></div>
 
         <!-- <button type="submit" class="send-btn">Send</button>  -->
-        <button class="garbage-btn"  @click="onCancelMail">delete</button>
+        <div class="garbage-btn"  @click="onCancelMail"><i class="fa-solid fa-trash-can"></i></div>
         
       </div>
     </form>
