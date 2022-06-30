@@ -6,7 +6,7 @@ export default {
  <section class="email-list-container">
     <ul>
         <li v-for="email in emails" class="email-line" >
-           <mail-preview :email="email"  ></mail-preview>
+           <mail-preview :email="email" ></mail-preview>
         </li>
     </ul>
  </section>
