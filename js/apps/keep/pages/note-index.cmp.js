@@ -21,21 +21,15 @@ export default {
             .then(notes => {
                 this.notes = notes
             })
+
         eventBus.on('eventRemoveTodo', this.removeTodo)
         eventBus.on('eventAddNote', this.addNote)
         eventBus.on('eventDeleteNote', this.deleteNote)
-        eventBus.on('eventPinNote', this.togglePinnedNote)
+        eventBus.on('eventUpdateNote', this.updateNote)
     },
     methods: {
-        // removeTodo(noteId) {
-        //     noteService.remove(noteId).then(() => {
-        //         noteId.info.todos.findIndex((todos) => console.log(todos.txt))
-        //         // const todoIdx = noteId.info.todos.findIndex(todo => todo.id === updatedEntity.id);
-        //         // entities.splice(idx, 1, updatedEntity)
-        //     })
-        // },
+
         addNote(note) {
-            // console.log(this.notes)
             noteService.addNote(note)
                 .then((note) => this.notes.unshift(note))
         },
@@ -46,14 +40,15 @@ export default {
                     this.notes.splice(idx, 1)
                 })
         },
-        togglePinnedNote(noteId) {
-            // console.log(noteId);
-            noteService.togglePinnedNote(noteId)
-                .then((note) => {
-                    const idx = this.notes.findIndex((note) => note.id === noteId)
-                    note.isPinned === true ? this.notes[idx].style.backgroundColor = 'rgba(255, 0, 0, 0.347)' : this.notes[idx].style.backgroundColor = '#eee'
+
+        updateNote(updatedNote) {
+            noteService.save(updatedNote)
+                .then(() => {
+                    const idx = this.notes.findIndex((note) => note.id === updatedNote.id)
+                    this.notes.splice(idx, 1, updatedNote)
                 })
         }
+
     },
     computed: {},
     unmounted() { },
