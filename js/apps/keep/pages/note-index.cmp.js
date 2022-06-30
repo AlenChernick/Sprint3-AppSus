@@ -27,11 +27,13 @@ export default {
     methods: {
         // removeTodo(noteId) {
         //     noteService.remove(noteId).then(() => {
-        //         const idx = this.notes.findIndex(note => note.id === noteId)
-        //         this.notes.splice(idx, 1)
+        //         noteId.info.todos.findIndex((todos) => console.log(todos.txt))
+        //         // const todoIdx = noteId.info.todos.findIndex(todo => todo.id === updatedEntity.id);
+        //         // entities.splice(idx, 1, updatedEntity)
         //     })
         // },
         addNote(note) {
+            console.log(this.notes)
             noteService.addNote(note)
                 .then((note) => this.notes.unshift(note))
         }

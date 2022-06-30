@@ -1,4 +1,5 @@
 import { noteText, noteImg, noteTodos, noteVideo } from '../cmps/note-template.cmp.js'
+import noteMenu from '../cmps/note-menu.cmp.js'
 
 export default {
     props: ['note'],
@@ -10,6 +11,7 @@ export default {
             :note="note">
             </component>
         </div>
+        <note-menu :note="note"/>
     </section>
     `,
     data() {
@@ -28,5 +30,6 @@ export default {
         noteImg,
         noteTodos,
         noteVideo,
+        noteMenu
     },
 };
