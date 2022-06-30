@@ -2,24 +2,21 @@ import { utilService } from "../../../services/util.service.js"
 import { storageService } from "../../../services/storage.service.js"
 import { asyncStorageService } from "../../../services/async-storage.service.js"
 
-const MAIL_KEY = "income_mail_db"
-const SEND_MAIL_KEY = "sended_mail_db"
+const MAIL_KEY = "mail_db"
 
 const mails = storageService.load(MAIL_KEY) || _createMails()
-const sendedMails = storageService.load(SEND_MAIL_KEY)
 
 export const mailService = {
   getMails,
   removeEmail,
   updateIsRead,
-  SendMail,
-  getSendedMails
+  saveMail,
+  getSendedMails,
 }
 function getMails() {
   return Promise.resolve(mails)
 }
-function getSendedMails
-() {
+function getSendedMails() {
   return Promise.resolve(sendedMails)
 }
 
@@ -42,13 +39,13 @@ function updateIsRead(emailId) {
   return newArr
 }
 
-function SendMail(newSendedMail) {
-  return save(newSendedMail)
+function saveMail(mails) {
+  return save(mails)
 }
 
-function save(newSendedMail) {
+function save(mails) {
   // if (newSendedMail.id) return asyncStorageService.put(SEND_MAIL_KEY, newSendedMail)
-   return asyncStorageService.post(SEND_MAIL_KEY, newSendedMail)
+  return asyncStorageService.post(MAIL_KEY, mails)
   // car.id = utilService.makeId();
   // const cars = query();
   // cars.push(car);
@@ -66,6 +63,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: utilService.getFormattedNowDate(),
       isRead: false,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -75,6 +77,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2021-02-23",
       isRead: true,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -84,6 +91,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2022-05-7",
       isRead: false,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -93,6 +105,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2022-06-2",
       isRead: true,
+      state: 'sent',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -102,6 +119,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2021-02-23",
       isRead: true,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -111,6 +133,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2022-06-29",
       isRead: false,
+      state: 'sent',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -120,6 +147,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2022-06-2",
       isRead: true,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -129,6 +161,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: utilService.getFormattedNowDate(),
       isRead: false,
+      state: 'sent',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -138,6 +175,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2021-02-23",
       isRead: true,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -147,6 +189,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2022-05-7",
       isRead: false,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -156,6 +203,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2022-06-2",
       isRead: true,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -165,6 +217,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2021-02-23",
       isRead: true,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -174,6 +231,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2022-06-29",
       isRead: false,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -183,6 +245,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2022-06-2",
       isRead: true,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -192,6 +259,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: utilService.getFormattedNowDate(),
       isRead: false,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -201,6 +273,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2021-02-23",
       isRead: true,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -210,6 +287,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2022-05-7",
       isRead: false,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -219,6 +301,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2022-06-2",
       isRead: true,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -228,6 +315,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2021-02-23",
       isRead: true,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -237,6 +329,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2022-06-29",
       isRead: false,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
     {
       id: utilService.makeId(),
@@ -246,6 +343,11 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2022-06-2",
       isRead: true,
+      state: 'inbox',
+      to: null,
+      cc: null,
+      bbc: null,
+      isStar: false,
     },
   ]
   const mails = genericMails

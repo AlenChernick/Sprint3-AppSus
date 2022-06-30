@@ -72,4 +72,7 @@ export function newMail() {
     console.log('event busd')
     emit('newMail')
 }
-
+export function sentPage() {
+    console.log('event busd????')
+    emit('sentPage')
+}

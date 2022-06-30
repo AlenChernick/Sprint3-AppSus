@@ -2,14 +2,16 @@ import { mailService } from "../services/mail.service.js"
 import mailList from "../cmps/mail-list.cmp.js"
 import mailSideBar from "../cmps/mail-side-bar.cmp.js"
 import { eventBus } from "../../../services/eventBus.service.js"
+import { utilService } from "../../../services/util.service.js"
 
 export default {
   template: `
 <section>
-  <div class="mail-main-conteiner flex">
+
+<div class="mail-main-conteiner flex">
   <!-- <mail-side-bar :mailsObj="mailsObj"></mail-side-bar> -->
-    <mail-side-bar :emails="emails" :mailToSend="mailToSend" ></mail-side-bar>
-    <mail-list :emails="emails"></mail-list>
+    <mail-side-bar :emails="emails" ></mail-side-bar>
+    <mail-list :emails="emailsToShow" ></mail-list>
     <!-- <pre>{{mailToSend}}</pre> -->
   </div>
   <div v-if="newMailModl" class="new-mail-modal">
@@ -71,9 +73,8 @@ export default {
         </textarea>
       </div>
       <div class="send-delete-row flex space-between">
-        <div  class="send-btn"  @click="onSendMail"><i class="fa-solid fa-paper-plane"></i></i></div>
+        <div  class="send-btn"  @click="onSendMail"><i class="fa-solid fa-paper-plane"></i></div>
 
-        <!-- <button type="submit" class="send-btn">Send</button>  -->
         <div class="garbage-btn"  @click="onCancelMail"><i class="fa-solid fa-trash-can"></i></div>
         
       </div>
@@ -87,31 +88,38 @@ export default {
     mailList,
     mailService,
     mailSideBar,
+    utilService,
   },
   data() {
     return {
       emails: null,
-      sendendEmails:null,
-   
+      filter: "inbox",
+
       newMailModl: false,
       mailToSend: {
-        from: "me",
+        name: "me",
         to: null,
         cc: null,
         bbc: null,
         subject: null,
         body: null,
-        isSent: true,
+        createdAt: utilService.getFormattedNowDate(),
+        isRead: true,
+        state: "sent",
+        to: null,
+        cc: null,
+        bbc: null,
+        isStar: false,
       },
     }
   },
   created() {
     mailService.getMails().then((emails) => (this.emails = emails))
-    mailService.getSendedMails().then((sendedMails) => (this.sendendEmails = sendedMails))
 
     eventBus.on("deletedMail", this.onDeleteMail) //iniialize event listener
     eventBus.on("updateIsRead", this.updateIsRead) //iniialize event listener
     eventBus.on("newMail", this.newMail) //iniialize event listener
+    eventBus.on("sentPage", this.sentPage) //iniialize event listener
   },
   methods: {
     onDeleteMail(emailId) {
@@ -136,16 +144,23 @@ export default {
       this.newMailModl = true
     },
     onSendMail() {
-      // console.log(this.mailToSend);
       this.newMailModl = !this.newMailModl
       // if(this.mailToSen.to=== null || this.mailToSen.subject===null ) return//this part invoke vue Unhandled error
-      mailService.SendMail(this.mailToSend).then(sendedMails=> {this.sendendEmails.push(sendedMails)
-      console.log(sendedMails);} )
+      mailService
+        .saveMail(this.mailToSend)
+        .then((sendedMail) => this.emails.push(sendedMail))
     },
-    onCancelMail(){
+    onCancelMail() {
       this.newMailModl = !this.newMailModl
-    }
+    },
+    sentPage() {
+      this.filter = "sent"
+    },
   },
-  computed: {},
+  computed: {
+    emailsToShow() {
+      return this.emails.filter((mail) => this.filter === mail.state)
+    },
+  },
   unmounted() {},
 }
