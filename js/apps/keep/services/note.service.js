@@ -12,6 +12,8 @@ export const noteService = {
     addNote,
     remove,
     togglePinnedNote,
+    get,
+    save,
 }
 
 
@@ -53,7 +55,7 @@ function addNote(note) {
             todos: note.info.todos || null,
         },
         style: {
-            backgroundColor: '#eee'
+            backgroundColor: utilService.getRandomColor()
         }
     }
     return save(newNote)

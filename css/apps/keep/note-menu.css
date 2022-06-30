@@ -1,3 +1,9 @@
+.note-menu {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 .note-menu-btn {
   border: none;
   font-size: 1.5rem;
@@ -15,4 +21,8 @@
 
 .pinned {
   color: rgba(0, 0, 255, 0.455);
+}
+
+.note-color-btn-container {
+  position: relative;
 }

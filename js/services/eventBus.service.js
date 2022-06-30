@@ -30,17 +30,14 @@ export const eventBus = { on, emit };
 
 
 // NOTE EVENT //
-// export function eventRemoveTodo(newNote, idx) {
-//     emit('eventRemoveTodo', newNote, idx)
-// }
-
-// export function eventToggleTodoComplete(newNote) {
-//     emit('eventToggleTodoComplete', newNote)
-// }
 
 export function eventAddTodo(newNote) {
     emit('eventAddTodo', newNote)
 }
+
+// export function eventDeleteTodo(newNote, idx) {
+//     emit('eventDeleteTodo', newNote, idx)
+// }
 
 export function eventAddNote(newNote) {
     emit('eventAddNote', newNote)
@@ -52,6 +49,10 @@ export function eventDeleteNote(noteId) {
 
 export function eventPinNote(noteId) {
     emit('eventPinNote', noteId)
+}
+
+export function eventUpdateNote(note) {
+    emit('eventUpdateNote', note)
 }
 
 

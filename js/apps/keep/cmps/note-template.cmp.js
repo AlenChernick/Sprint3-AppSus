@@ -1,4 +1,4 @@
-import { eventAddTodo } from '../../../services/eventBus.service.js'
+import { eventAddTodo, eventUpdateNote } from '../../../services/eventBus.service.js'
 
 export const noteText = {
     template: `
@@ -30,7 +30,7 @@ export const noteTodos = {
             :class="{'todo-finished' : todo.isFinished, 'todo-unfinished': !todo.isFinished}"
             class="todo-li">
             {{todo.txt}}
-            <button @click.stop="removeTodo(idx)" class="todo-remove-btn">X</button>
+            <button @click.stop="removeTodo(idx)" class="todo-remove-btn"><i class="fa-solid fa-circle-minus"></i></button>
             </li>
         </ul>
         <input @keyup.enter="addTodo" v-model="nextTodo" class="next-todo-input" placeholder="To do.."/>
@@ -55,12 +55,13 @@ export const noteTodos = {
         },
         removeTodo(idx) {
             const newNote = this.createNoteCopy()
-            // eventRemoveTodo(newNote, idx)
+            newNote.info.todos.splice(idx, 1)
+            eventUpdateNote(newNote)
         },
         toggleTodoFinished(todoIdx) {
             this.note.info.todos[todoIdx].isFinished = !this.note.info.todos[todoIdx].isFinished
             const newNote = this.createNoteCopy()
-            // eventToggleTodoComplete(newNote)
+            eventUpdateNote(newNote)
         },
         createNoteCopy() {
             return JSON.parse(JSON.stringify(this.note))

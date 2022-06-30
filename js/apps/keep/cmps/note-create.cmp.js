@@ -44,7 +44,7 @@ export default {
                 todos: null,
             }
             if (this.note.noteType === 'todos') noteInfo.title = this.newVal
-            else if (this.noteType === 'video') {
+            else if (this.note.noteType === 'video') {
                 noteInfo.video = this.getId(this.newVal)
             }
             else noteInfo[this.note.noteType] = this.newVal
@@ -56,6 +56,16 @@ export default {
         changeNoteType(newType) {
             this.note.type = newType
             this.note.noteType = this.infoType
+        },
+        getId(url) {
+            console.log(url);
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/
+            const match = url.match(regExp)
+            console.log(match);
+
+            return (match && match[2].length === 11)
+                ? match[2]
+                : null
         }
     },
     computed: {
@@ -66,7 +76,7 @@ export default {
                 case 'noteImg':
                     return 'img'
                 case 'noteVideo':
-                    return 'noteVideo'
+                    return 'video'
                 case 'noteTodos':
                     return 'todos'
                 default:
