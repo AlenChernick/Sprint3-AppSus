@@ -7,7 +7,8 @@ export default {
   template: `
 <section>
   <div class="mail-main-conteiner flex">
-    <mail-side-bar :emails="emails"></mail-side-bar>
+  <!-- <mail-side-bar :mailsObj="mailsObj"></mail-side-bar> -->
+    <mail-side-bar :emails="emails" :mailToSend="mailToSend" ></mail-side-bar>
     <mail-list :emails="emails"></mail-list>
     <!-- <pre>{{mailToSend}}</pre> -->
   </div>
@@ -91,6 +92,7 @@ export default {
     return {
       emails: null,
       sendendEmails:null,
+   
       newMailModl: false,
       mailToSend: {
         from: "me",
@@ -134,9 +136,11 @@ export default {
       this.newMailModl = true
     },
     onSendMail() {
+      // console.log(this.mailToSend);
       this.newMailModl = !this.newMailModl
-      if(!this.mailToSen.to || !this.mailToSen.subject ) return//this part invoke vue Unhandled error
-      mailService.SendMail(this.mailToSend).then(sendedMails=> this.sendendEmails.push(sendedMails) )
+      // if(this.mailToSen.to=== null || this.mailToSen.subject===null ) return//this part invoke vue Unhandled error
+      mailService.SendMail(this.mailToSend).then(sendedMails=> {this.sendendEmails.push(sendedMails)
+      console.log(sendedMails);} )
     },
     onCancelMail(){
       this.newMailModl = !this.newMailModl
