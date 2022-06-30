@@ -37,10 +37,10 @@
   /* height:10rem ; */
 }
 .send-btn {
-  width: 60px;
+  /* width: 60px; */
   margin-left: 5px;
-  background-color: rgb(57, 57, 174);
-  color: white;
+  /* background-color: rgb(57, 57, 174); */
+  color: rgb(11, 7, 246);
   border: none;
   border-radius: 4px;
 }
@@ -48,3 +48,5 @@
     width: 60px;
     margin-right: 5px; 
 }
+
+
