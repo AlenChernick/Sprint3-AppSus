@@ -22,7 +22,6 @@ export default {
                 this.notes = notes
             })
 
-        eventBus.on('eventRemoveTodo', this.removeTodo)
         eventBus.on('eventAddNote', this.addNote)
         eventBus.on('eventDeleteNote', this.deleteNote)
         eventBus.on('eventUpdateNote', this.updateNote)
@@ -40,7 +39,6 @@ export default {
                     this.notes.splice(idx, 1)
                 })
         },
-
         updateNote(updatedNote) {
             noteService.save(updatedNote)
                 .then(() => {

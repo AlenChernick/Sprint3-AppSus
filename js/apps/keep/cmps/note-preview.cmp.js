@@ -1,5 +1,6 @@
 import { noteText, noteImg, noteTodos, noteVideo } from '../cmps/note-template.cmp.js'
 import noteMenu from '../cmps/note-menu.cmp.js'
+import noteEdit from '../cmps/note-edit.cmp.js'
 
 export default {
     props: ['note'],
@@ -11,18 +12,31 @@ export default {
             :note="note">
             </component>
         </div>
-        <note-menu :note="note"/>
+        <note-menu :note="note" @openNoteEdit="toggleNoteEdit"/>
+        <note-edit :note="note" v-if="isNoteEdit" @closeNoteEdit="closeNoteEdit"/>
     </section>
     `,
     data() {
-        return {};
+        return {
+            isNoteEdit: false,
+        }
     },
     created() { },
-    methods: {},
+    methods: {
+        openNoteEdit() {
+            this.isNoteEdit = true
+        },
+        closeNoteEdit() {
+            this.isNoteEdit = false
+        },
+        toggleNoteEdit() {
+            this.isNoteEdit = !this.isNoteEdit
+        }
+    },
     computed: {
         noteBackgroundColor() {
             return { backgroundColor: this.note.style.backgroundColor }
-        }
+        },
     },
     unmounted() { },
     components: {
@@ -30,6 +44,7 @@ export default {
         noteImg,
         noteTodos,
         noteVideo,
-        noteMenu
+        noteMenu,
+        noteEdit
     },
 };

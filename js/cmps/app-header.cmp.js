@@ -1,10 +1,10 @@
 export default {
     template: `
  <header class="app-header">
-    <div class="app-logo">
-        <h2>AppSus</h2>
-    </div>
-    <nav class="app-nav">
+     <nav class="app-nav">
+        <div class="app-logo">
+            <img :src="imgUrl">
+        </div>
         <router-link to="/" class="nav-home">Home</router-link>
         <router-link to="/mail" class="nav-mail">Mail</router-link>
         <router-link to="/keep" class="nav-keep">Keep</router-link>
@@ -12,7 +12,9 @@ export default {
  </header>
 `,
     data() {
-        return {};
+        return {
+            imgUrl: '/img/app-logo.png'
+        };
     },
     created() { },
     methods: {},
