@@ -14,7 +14,7 @@ export default {
     `,
     data() {
         return {
-            imgUrl: '../images/app-logo.png',
+            imgUrl: 'images/applogo.png',
         };
     },
     created() { },

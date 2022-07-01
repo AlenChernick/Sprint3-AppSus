@@ -22,7 +22,7 @@ export default {
 `,
     data() {
         return {
-            imgUrl: '/img/app-logo.png',
+            imgUrl: 'images/applogo.png',
             toggleMenu: false,
         };
     },
