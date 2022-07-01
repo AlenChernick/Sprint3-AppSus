@@ -8,7 +8,7 @@
 @import '/css/basic/helpers.css';
 
 /* COMPONENTS */
-@import '/css/cmps/header.css';
+@import '../css/cmps/header.css';
 @import '/css/cmps/app-home.css';
 @import '/css/cmps/user-msg.css';
 @import '/css/cmps/main-content.css';
