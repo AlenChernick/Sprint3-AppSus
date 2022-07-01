@@ -30,10 +30,11 @@
   color: lightslategray;
   display: flex;
   padding: 10px;
-  transition: 0.5s;
   border-radius: 40px;
   height: 40px;
   width: 40px;
+  background-color: transparent;
+  transition: color 0.5s, background-color 0.5s;
 }
 .star:hover {
   color: yellow;
