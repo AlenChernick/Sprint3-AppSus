@@ -1,7 +1,7 @@
 
 
 export default {
- template: `
+    template: `
 
 
  <div>Hellooooooo</div>
@@ -12,11 +12,11 @@ export default {
  <div>Hellooooooo</div>
 
 `,
-data() {
-return {};
-},
-created() {},
-methods: {},
-computed: {},
-unmounted() {},
+    data() {
+        return {};
+    },
+    created() { },
+    methods: {},
+    computed: {},
+    unmounted() { },
 };

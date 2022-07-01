@@ -5,15 +5,25 @@ export default {
         <div class="app-logo">
             <img :src="imgUrl">
         </div>
-        <router-link to="/" class="nav-home">Home</router-link>
-        <router-link to="/mail" class="nav-mail">Mail</router-link>
-        <router-link to="/keep" class="nav-keep">Keep</router-link>
+        <div class="nav-wrapper">
+                <button  @click="toggleMenu = !toggleMenu" class="menu-open-btn"><i class="fa-solid fa-bars"></i></button>
+                <transition>  
+                    <div v-if="toggleMenu" class="app-navigation">
+                        <router-link class="nav-anchor home-page-anchor" to="/">Home Page<i class="fa-solid fa-house"></i></router-link>
+                        <router-link class="nav-anchor mail-page-anchor" to="/mail">Mail<i class="fa-solid fa-envelope"></i></router-link>
+                        <router-link class="nav-anchor mail-page-anchor" to="/keep">Keep<i class="fa-solid fa-note-sticky"></i></router-link>
+                        <router-link class="nav-anchor mail-page-anchor" to="/keep">About<i class="fa-solid fa-id-card-clip"></i></router-link>
+                    </div>
+                </transition>
+            
+        </div>
     </nav>
  </header>
 `,
     data() {
         return {
-            imgUrl: '/img/app-logo.png'
+            imgUrl: '/img/app-logo.png',
+            toggleMenu: false,
         };
     },
     created() { },

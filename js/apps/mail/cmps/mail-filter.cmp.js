@@ -2,8 +2,8 @@
 export default {
   template: `
 
-<section class="mail-filter">   
-    <input type="text" v-model='filterBy.text' @input='onFilterby'>
+<section class="mail-filter">
+    <input type="text" v-model='filterBy.text' @input='onFilterby' placeholder="Search Mail">
     <select v-model='filterBy.state' @change='onFilterby' name="mail-state" >
        <option value="inbox">Inbox</option>
        <option value="sent">Sent</option>
@@ -15,20 +15,20 @@ export default {
  `,
   data() {
     return {
-    //   text: "",
+      //   text: "",
       filterBy: {
         text: "",
         state: "inbox",
       },
     }
   },
-  created() {},
+  created() { },
   methods: {
     onFilterby() {
       //   filterTxt("filterTxt", this.text)
-      this.$emit("onFilterby", {...this.filterBy})
+      this.$emit("onFilterby", { ...this.filterBy })
     },
   },
   computed: {},
-  unmounted() {},
+  unmounted() { },
 }

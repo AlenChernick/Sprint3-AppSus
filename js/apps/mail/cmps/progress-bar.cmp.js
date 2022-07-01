@@ -9,10 +9,10 @@ export default {
     `,
     computed: {
         barFill() {
-            return {width: this.fillWidth + '%'}
+            return { width: this.fillWidth + '%' }
         },
         countColor() {
-            return (this.fillWidth<50)? 'white' : '' 
+            return (this.fillWidth < 50) ? 'white' : ''
         }
     },
     props: ['fillWidth']

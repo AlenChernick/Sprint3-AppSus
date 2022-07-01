@@ -183,14 +183,14 @@ export default {
   },
   computed: {
     emailsToShow() {
-      if (this.filter === "star")return this.emails.filter((mail) => mail.isStar === true && mail.name.includes(this.text)
-        )
+      if (this.filter === "star") return this.emails.filter((mail) => mail.isStar === true && mail.name.includes(this.text)
+      )
       // return this.emails.filter((mail) => this.filter === mail.state )
-      return this.emails.filter((mail) =>this.filter === mail.state &&   mail.name.toUpperCase().includes(this.text)
+      return this.emails.filter((mail) => this.filter === mail.state && mail.name.toUpperCase().includes(this.text)
       )
 
       // return tempArr.filter((mail) => mail.name.includes(this.text))
     },
   },
-  unmounted() {},
+  unmounted() { },
 }

@@ -18,6 +18,7 @@
 @import 'apps/email/email-preview.css';
 @import 'apps/email/mail-side-bar.css';
 @import 'apps/email/new-mail-modal.css';
+@import 'apps/email/email-filter.css';
 
 /* KEEP APP */
 @import 'apps/keep/note-app.css';

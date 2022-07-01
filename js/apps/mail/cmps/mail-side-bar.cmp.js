@@ -25,11 +25,11 @@ export default {
     return {
       unReaded: 0,
       sent: 0,
-      star:0,
-      spaceStr:`\xa0\xa0\xa0\xa0\xa0`
+      star: 0,
+      spaceStr: `\xa0\xa0\xa0\xa0\xa0`
     }
   },
-  created() {},
+  created() { },
   methods: {
     onNewMail() {
       newMail("newMail") //eventbus
@@ -63,5 +63,5 @@ export default {
     },
   },
 
-  unmounted() {},
+  unmounted() { },
 }
