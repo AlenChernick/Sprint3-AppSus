@@ -44,6 +44,11 @@
   width: 10%;
   display: flex;
   justify-content: flex-start;
+  cursor: pointer;
+}
+
+.app-logo img:hover {
+  animation: move-header 0.5s linear;
 }
 
 .app-nav a {
@@ -78,4 +83,22 @@
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+}
+
+@keyframes move-header {
+  from {
+    transform: translateY(0%);
+  }
+  30% {
+    transform: translateY(5%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+  70% {
+    transform: translateY(-5%);
+  }
+  to {
+    transform: translateY(0%);
+  }
 }

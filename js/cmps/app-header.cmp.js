@@ -3,7 +3,7 @@ export default {
  <header class="app-header">
      <nav class="app-nav">
         <div class="app-logo">
-            <img :src="imgUrl">
+            <img :src="imgUrl" @click="goToHomePage">
         </div>
         <div class="nav-wrapper">
                 <button  @click="toggleMenu = !toggleMenu" class="menu-open-btn"><i class="fa-solid fa-bars"></i></button>
@@ -27,7 +27,11 @@ export default {
         };
     },
     created() { },
-    methods: {},
+    methods: {
+        goToHomePage() {
+            this.$router.push('/')
+        }
+    },
     computed: {},
     unmounted() { },
 };
