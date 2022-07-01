@@ -1,6 +1,6 @@
 .email-preview {
     display: grid;
-    grid-template-columns: 1fr 2fr 8fr 1fr;
+    grid-template-columns:1fr 1fr 2fr 6fr 2fr;
     grid-template-rows: 1fr;
     height: 50px;
     align-items: center;
@@ -25,4 +25,26 @@ font-weight: 800;
 
 .email-line{
     list-style-type: none;
+}
+
+.star{
+    color: lightslategray;
+    display: flex;
+    padding:10px;
+    transition:  0.5s ;
+}
+.star:hover{
+    color: yellow;
+    background-color: rgba(211, 211, 211, 0.37);
+    border-radius: 40px;
+    height: 40px;
+    width: 40px;
+}
+.is-star-on{
+    color: yellow;
+}
+
+.is-star-off{
+    color: lightslategray;
+
 }

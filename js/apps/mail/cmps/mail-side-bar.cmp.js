@@ -1,5 +1,10 @@
-
-import { newMail,sentPage } from "../../../services/eventBus.service.js"
+import {
+  newMail,
+  sentPage,
+  inboxPage,
+  starPage,
+  draftPage,
+} from "../../../services/eventBus.service.js"
 
 export default {
   props: ["emails"],
@@ -8,42 +13,53 @@ export default {
 
 <div @click="onNewMail" class="compose-btn"><i class="fa-solid fa-plus"></i> Compose</div>
     <div @click="onInboxPage" class="inbox-btn side-bar-btns"> <i class="fa-solid fa-inbox"></i>  {{CountunReaden}}</div>
-    <div class="starred-btn side-bar-btns"><i class="fa-solid fa-star"></i>Starred</div>
+    <div   @click="onStarPage" class="starred-btn side-bar-btns"><i class="fa-solid fa-star"></i>Starred {{ CountunStar}}</div>
     <div  @click="onSentPage" class="sent-btn side-bar-btns"><i class="fa-solid fa-share-from-square"></i> Sent  {{CountunSent}} </div>
-    <div class="Draft side-bar-btns"><i class="fa-brands fa-firstdraft"></i> Draft</div>
+    <div   @click="onDraftPage" class="Draft side-bar-btns"><i class="fa-brands fa-firstdraft"></i> Draft {{CountunDraft}}</div>
 
     
 </section>
 `,
-  components: {
-
-  },
+  components: {},
   data() {
     return {
       unReaded: 0,
       sent: 0,
+      star:0,
     }
   },
   created() {},
   methods: {
     onNewMail() {
-      console.log("onNewMail side bar")
       newMail("newMail") //eventbus
     },
-    
-    onSentPage(){
+
+    onSentPage() {
       sentPage("sentPage") //eventbus
-    }
+    },
+    onInboxPage() {
+      inboxPage("inboxPage") //eventbus
+    },
+    onDraftPage() {
+      draftPage("draftPage") //eventbus
+    },
+    onStarPage() {
+      starPage("starPage") //eventbus
+    },
   },
   computed: {
     CountunReaden() {
-      return (this.unReaded =
-        "inbox " + this.emails.filter((email) => email.isRead === false && email.state === 'inbox').length)
+      return ("inbox " + this.emails.filter((email) => email.state === "inbox").length)
     },
     CountunSent() {
-      return this.emails.filter(mail=> mail.state === 'sent').length
-     
-    }
+      return this.emails.filter((mail) => mail.state === "sent").length
+    },
+    CountunStar() {
+      return this.emails.filter((mail) => mail.isStar === true).length
+    },
+    CountunDraft() {
+      return this.emails.filter((mail) => mail.state === "draft").length
+    },
   },
 
   unmounted() {},

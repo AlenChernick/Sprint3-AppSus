@@ -12,6 +12,7 @@ export const mailService = {
   updateIsRead,
   saveMail,
   getSendedMails,
+  updateIsStar
 }
 function getMails() {
   return Promise.resolve(mails)
@@ -39,18 +40,23 @@ function updateIsRead(emailId) {
   return newArr
 }
 
+function updateIsStar(emailId){
+  const idx = mails.findIndex((email) => email.id === emailId)
+  mails[idx].isStar = !mails[idx].isStar
+  storageService.store(MAIL_KEY, mails)
+  const newArr = storageService.load(MAIL_KEY)
+  if (!newArr.length) _createMails()
+  return newArr
+
+}
+
 function saveMail(mails) {
   return save(mails)
 }
 
 function save(mails) {
-  // if (newSendedMail.id) return asyncStorageService.put(SEND_MAIL_KEY, newSendedMail)
   return asyncStorageService.post(MAIL_KEY, mails)
-  // car.id = utilService.makeId();
-  // const cars = query();
-  // cars.push(car);
-  // utilService.saveToStorage(CARS_KEY, cars);
-  // return car;
+
 }
 
 function _createMails() {
@@ -119,7 +125,7 @@ function _createMails() {
       to: "momo@momo.com",
       createdAt: "2021-02-23",
       isRead: true,
-      state: 'inbox',
+      state: 'draft',
       to: null,
       cc: null,
       bbc: null,
@@ -151,7 +157,7 @@ function _createMails() {
       to: null,
       cc: null,
       bbc: null,
-      isStar: false,
+      isStar: true,
     },
     {
       id: utilService.makeId(),

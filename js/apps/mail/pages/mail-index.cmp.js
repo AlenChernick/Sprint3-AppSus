@@ -1,6 +1,7 @@
 import { mailService } from "../services/mail.service.js"
 import mailList from "../cmps/mail-list.cmp.js"
 import mailSideBar from "../cmps/mail-side-bar.cmp.js"
+import mailFilter from "../cmps/mail-filter.cmp.js"
 import { eventBus } from "../../../services/eventBus.service.js"
 import { utilService } from "../../../services/util.service.js"
 
@@ -8,13 +9,14 @@ export default {
   template: `
 <section>
 
+  <mail-filter @onFilterby="filterby" ></mail-filter>
 <div class="mail-main-conteiner flex">
   <!-- <mail-side-bar :mailsObj="mailsObj"></mail-side-bar> -->
     <mail-side-bar :emails="emails" ></mail-side-bar>
     <mail-list :emails="emailsToShow" ></mail-list>
     <!-- <pre>{{mailToSend}}</pre> -->
   </div>
-  <div v-if="newMailModl" class="new-mail-modal">
+    <div v-if="newMailModl" class="new-mail-modal">
     <div class="mail-modal-header flex space-between">
       <div>New Message</div>
       <button class="send-btn">Trow</button>
@@ -89,12 +91,13 @@ export default {
     mailService,
     mailSideBar,
     utilService,
+    mailFilter,
   },
   data() {
     return {
       emails: null,
       filter: "inbox",
-
+      text: "",
       newMailModl: false,
       mailToSend: {
         name: "me",
@@ -120,10 +123,15 @@ export default {
     eventBus.on("updateIsRead", this.updateIsRead) //iniialize event listener
     eventBus.on("newMail", this.newMail) //iniialize event listener
     eventBus.on("sentPage", this.sentPage) //iniialize event listener
+    eventBus.on("inboxPage", this.inboxPage) //iniialize event listener
+    eventBus.on("starPage", this.starPage) //iniialize event listener
+    eventBus.on("draftPage", this.draftPage) //iniialize event listener
+    eventBus.on("addStar", this.addStar) //iniialize event listener
+    // eventBus.on("addStar", this.addStar) //iniialize event listener
+    // eventBus.on("filterTxt", this.filterTxt) //iniialize event listener
   },
   methods: {
     onDeleteMail(emailId) {
-      console.log("delete", emailId)
       mailService
         .removeEmail(emailId)
         .then((emails) => {
@@ -136,11 +144,9 @@ export default {
         })
     },
     updateIsRead(emailId) {
-      console.log(emailId, "read")
       this.emails = mailService.updateIsRead(emailId)
     },
     newMail() {
-      console.log("newMail index")
       this.newMailModl = true
     },
     onSendMail() {
@@ -156,10 +162,34 @@ export default {
     sentPage() {
       this.filter = "sent"
     },
+    inboxPage() {
+      this.filter = "inbox"
+    },
+    draftPage() {
+      this.filter = "draft"
+    },
+    starPage() {
+      this.filter = "star"
+    },
+    addStar(emailId) {
+      mailService.updateIsStar(emailId).then((emails) => (this.emails = emails))
+    },
+    filterby(filter) {
+      console.log('test');
+      this.text = filter.text.toUpperCase()
+      this.filter = filter.state
+      console.log(filter.state);
+    },
   },
   computed: {
     emailsToShow() {
-      return this.emails.filter((mail) => this.filter === mail.state)
+      if (this.filter === "star")return this.emails.filter((mail) => mail.isStar === true && mail.name.includes(this.text)
+        )
+      // return this.emails.filter((mail) => this.filter === mail.state )
+      return this.emails.filter((mail) =>this.filter === mail.state &&   mail.name.toUpperCase().includes(this.text)
+      )
+
+      // return tempArr.filter((mail) => mail.name.includes(this.text))
     },
   },
   unmounted() {},

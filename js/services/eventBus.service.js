@@ -68,12 +68,32 @@ export function deleteMail(mailId) {
 export function updateIsRead(mailId) {
     emit('updateIsRead', mailId)
 }
-
+//Save new mail
 export function newMail() {
-    console.log('event busd')
     emit('newMail')
 }
+//Chenge filter
 export function sentPage() {
-    console.log('event busd????')
     emit('sentPage')
 }
+//Chenge filter
+export function inboxPage() {
+    emit('inboxPage')
+}
+//Chenge filter
+export function starPage() {
+    emit('starPage')
+}
+//Chenge filter
+export function draftPage() {
+    emit('draftPage')
+}
+
+//Chenge filter
+export function addStar(emailId) {
+    emit('addStar',emailId)
+}
+// export function filterTxt(txt){
+//     console.log('event');
+//     emit('filterTxt',txt)
+// }

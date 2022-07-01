@@ -1,5 +1,5 @@
 import mailExtend from "./mail-extend.js"
-import { updateIsRead } from "../../../services/eventBus.service.js"
+import { updateIsRead, addStar } from "../../../services/eventBus.service.js"
 
 export default {
   props: ["email"],
@@ -9,6 +9,7 @@ export default {
      
      <!-- <div class="flex flex-row space-between email-preview"> -->
     <div class="email-preview"   @click="isExtend=!isExtend, onRemoveRead(email.id)">
+      <div class="star" :class="addStarColor" @click='onAddStar(email.id)'><i class="fa-solid fa-star"></i></div>
        <div v-bind:class='ifReadColor'> {{email.name}} </div>
        <div v-bind:class='ifReadColor'> {{email.subject}} </div>
        <div>{{email.body}}(hard coded for now) </div>
@@ -26,14 +27,21 @@ export default {
   data() {
     return {
       isExtend: false,
+      // isStar:false,
     }
   },
-  created() {},
+  created() {
+    // this.isStar = this.email.isStar
+
+
+  },
   methods: {
-    onRemoveRead(emailId){
-      updateIsRead(emailId)}
-
-
+    onRemoveRead(emailId) {
+      updateIsRead(emailId)
+    },
+    onAddStar(emailId) {
+      addStar(emailId)
+    },
   },
   computed: {
     ifReadColor() {
@@ -45,15 +53,19 @@ export default {
     onExtend() {
       return true
     },
+    addStarColor(){
+      return {
+        'is-star-on':this.email.isStar,
+        // 'is-star-off': !this.email.isStar,
+      }
+    }
   },
-  watch:{
+  watch: {
     // isExtend(){
     //   if(isExtend){
     //     updateIsRead(this.email.id)
     //   }
     // }
-
-
   },
   unmounted() {},
 }
