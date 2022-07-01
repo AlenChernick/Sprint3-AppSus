@@ -2,13 +2,13 @@
     display: flex;
     
 }
+.space-between{
+    justify-content: space-between;
+}
 .flex-row{
     flex-direction: row;
 }
 
-.space-between{
-    justify-content: space-between;
-}
 .space-evenly{
     justify-content:space-evenly;
 }

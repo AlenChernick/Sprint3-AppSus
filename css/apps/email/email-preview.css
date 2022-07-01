@@ -1,12 +1,13 @@
 .email-preview {
     display: grid;
-    grid-template-columns:1fr 1fr 2fr 6fr 2fr;
+    grid-template-columns:0.5fr 1fr 2fr 6fr 1fr;
     grid-template-rows: 1fr;
     height: 50px;
     align-items: center;
     padding: 0 10px 0 3px;
     box-shadow: inset 0 -1px 0 0 rgba(100,121,143,0.122);
     cursor: pointer;
+    background-color: rgb(213, 240, 240);
 
 }
 
@@ -14,15 +15,21 @@
 font-weight: 800;
 }
 .extended-mail{
-    padding: 0px 10px 20px 20px;
+    /* padding: 0px 10px 20px 20px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    background-color: rgb(215, 205, 205);
+    background-color: rgb(176, 196, 206);
     border-bottom: 2px solid #e3e8ea;
+    border-radius:10px;
 }
-
+.extend-mail-content{
+    padding:10px 10px 20px 20px;
+}
+.extend-mail-body{
+    margin-top: 1rem;
+}
 .email-line{
     list-style-type: none;
 }
@@ -48,3 +55,23 @@ font-weight: 800;
     color: lightslategray;
 
 }
+
+.extended-delete{
+border-radius: 50%;
+font-size: large;
+border: none;
+background-color:  rgba(231, 231, 231, 0.832) ;
+}
+.extended-delete:hover{
+color: rgb(189, 55, 55) ;
+cursor: pointer;
+
+}
+.extended-mail-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0.5rem;
+    background-color: rgb(193, 213, 224);;
+}
+

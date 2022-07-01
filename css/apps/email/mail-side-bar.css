@@ -25,7 +25,7 @@
 }
 .side-bar-btns{
     display: flex;
-
+font-size: 1.2rem;
     height: 2rem;
     padding-inline-start: 1rem;
     align-items: center;
