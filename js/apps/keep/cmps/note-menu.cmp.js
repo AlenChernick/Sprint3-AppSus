@@ -5,11 +5,11 @@ export default {
     props: ['note'],
     template: `
     <section class="note-menu">
+        <button class="note-menu-btn note-menu-pin-btn" :class="pinned"  @click="pinnedToggle"><i class="fa-solid fa-thumbtack"></i></button>
         <div class="note-menu-color-btn-container">
             <button class="note-menu-btn note-menu-color-btn"><i class="fa-solid fa-palette"></i></button>
             <note-color-select class="note-color-select" @colorChanged="changeNoteColor"/>
-    </div>
-        <button class="note-menu-btn note-menu-pin-btn" :class="pinned"  @click="pinnedToggle"><i class="fa-solid fa-thumbtack"></i></button>
+        </div>
         <!-- <button class="note-menu-email-btn" @click="sendToEmail"><i class="fa-solid fa-envelope"></i></button> -->
         <button class="note-menu-btn note-menu-edit-btn" @click="editNote"><i class="fa-solid fa-pen-to-square"></i></button> 
         <button class="note-menu-btn note-menu-trash-btn" @click="deleteNote"><i class="fa-solid fa-trash"></i></button>
