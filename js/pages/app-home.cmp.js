@@ -3,6 +3,7 @@ export default {
     <section class="home-page-container">
         <section class="hero-section">
             <div class="hero-img">
+            <img :src="imgUrl">
                 <h1 class="hero-title">AppSus By Alen Chernick & Alon Kolker</h1>
             </div>
             </section>
@@ -12,7 +13,9 @@ export default {
     </section>
     `,
     data() {
-        return {};
+        return {
+            imgUrl: '/img/app-logo.png'
+        };
     },
     created() { },
     methods: {},

@@ -35,10 +35,6 @@ export function eventAddTodo(newNote) {
     emit('eventAddTodo', newNote)
 }
 
-// export function eventDeleteTodo(newNote, idx) {
-//     emit('eventDeleteTodo', newNote, idx)
-// }
-
 export function eventAddNote(newNote) {
     emit('eventAddNote', newNote)
 }

@@ -6,13 +6,23 @@
   margin-bottom: 1rem;
 }
 
+.app-logo img {
+  width: 10%;
+  display: flex;
+  justify-content: flex-start;
+}
+
 .app-nav a {
+  display: flex;
+  align-items: center;
   text-decoration: none;
   color: black;
   font-size: 2rem;
   transition: color 0.3s;
+  font-weight: bold;
+  padding-right: 9rem;
 }
 
 .app-nav a:hover {
-  color: fuchsia;
+  color: #58a3ea;
 }
