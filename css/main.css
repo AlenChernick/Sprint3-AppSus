@@ -1,17 +1,17 @@
 /* SETUP */
-@import '/css/setup/vars.css';
-@import '/css/setup/typography.css';
+@import 'setup/vars.css';
+@import 'setup/typography.css';
 
 /* BASE */
-@import '/css/basic/base.css';
-@import '/css/basic/layout.css';
-@import '/css/basic/helpers.css';
+@import 'basic/base.css';
+@import 'basic/layout.css';
+@import 'basic/helpers.css';
 
 /* COMPONENTS */
-@import '../css/cmps/header.css';
-@import '/css/cmps/app-home.css';
-@import '/css/cmps/user-msg.css';
-@import '/css/cmps/main-content.css';
+@import 'cmps/header.css';
+@import 'cmps/app-home.css';
+@import 'cmps/user-msg.css';
+@import 'cmps/main-content.css';
 
 /* MAIL APP */
 @import 'apps/email/email-list.css';
@@ -31,4 +31,4 @@
 @import 'apps/keep/note-edit.css';
 
 /* MEDIA QUERIES */
-@import '/css/mq/mq.css';
+@import 'mq/mq.css';
