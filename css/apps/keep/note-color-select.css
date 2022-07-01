@@ -4,12 +4,13 @@
   transform: translateX(-800%);
   opacity: 0;
   transition: opacity 0.2s;
+  padding-top: 0.5rem;
 }
 
 .note-menu-color-btn-container:hover > .note-color-select {
   opacity: 1;
   position: absolute;
-  transform: translateX(0);
+  transform: translateX(-25%);
 }
 
 .note-colors-palette {

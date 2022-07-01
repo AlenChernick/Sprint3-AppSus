@@ -97,7 +97,7 @@ function _createDefaultNote() {
             noteType: 'img',
             isPinned: false,
             info: {
-                img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR347srFXDNqK4xYjJj51Swzlv89jUnjFSkVw&usqp=CAU',
+                img: 'https://www.gardeningknowhow.com/wp-content/uploads/2019/08/flower-color.jpg',
                 title: 'Flowers'
             },
             style: {
@@ -193,7 +193,7 @@ function _createDefaultNote() {
             id: utilService.makeId(),
             type: 'noteImg',
             noteType: 'img',
-            isPinned: false,
+            isPinned: true,
             info: {
                 img: 'https://media2.giphy.com/media/SggILpMXO7Xt6/giphy.gif?cid=ecf05e47pbc4atopra8j3459nczfdk38t667ho3ked30smdq&rid=giphy.gif&ct=g',
             },
@@ -205,7 +205,7 @@ function _createDefaultNote() {
             id: utilService.makeId(),
             type: 'noteText',
             noteType: 'txt',
-            isPinned: true,
+            isPinned: false,
             info: {
                 txt: 'Yuval Wedding 1.9.22'
             },
