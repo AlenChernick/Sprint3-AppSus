@@ -1,4 +1,4 @@
-import { eventDeleteNote, eventUpdateNote, eventAddNote, eventSendNoteToMail } from '../../../services/eventBus.service.js'
+import { eventBus, eventDeleteNote, eventUpdateNote, eventAddNote, eventSendNoteToMail } from '../../../services/eventBus.service.js'
 import { utilService } from '../../../services/util.service.js'
 import { mailService } from '../../mail/services/mail.service.js'
 import noteColorSelect from '../cmps/note-color-select.cmp.js'
@@ -67,8 +67,10 @@ export default {
                 bbc: null,
                 isStar: false,
             }
+
             mailService.getMailFromNote(email)
             eventSendNoteToMail(email)
+            eventBus.emit('show-msg', { txt: 'Note Sended To Email Successfully', link: '/mail', linkTxt: 'Check It' })
         }
     },
     computed: {

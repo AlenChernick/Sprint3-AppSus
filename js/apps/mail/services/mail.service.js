@@ -2,6 +2,7 @@ import { utilService } from "../../../services/util.service.js"
 import { storageService } from "../../../services/storage.service.js"
 import { asyncStorageService } from "../../../services/async-storage.service.js"
 import { noteService } from "../../keep/services/note.service.js"
+import { eventSendMailToNote } from '../../../services/eventBus.service.js'
 
 const MAIL_KEY = "mail_db"
 
@@ -98,6 +99,7 @@ function sendMailToNotes(emailId) {
     }
   }
   noteService.addNote(note)
+  eventSendMailToNote(note)
 }
 
 

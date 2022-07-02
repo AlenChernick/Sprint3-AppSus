@@ -24,6 +24,7 @@ export default {
             .then(notes => {
                 this.notes = notes
             })
+        eventBus.on('eventSendMailToNote', this.addNote)
         eventBus.on('eventAddNote', this.addNote)
         eventBus.on('eventDeleteNote', this.deleteNote)
         eventBus.on('eventUpdateNote', this.updateNote)

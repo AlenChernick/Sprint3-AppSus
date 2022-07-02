@@ -2,11 +2,13 @@ const { createApp } = Vue
 import { router } from './router.js'
 import appHeader from './cmps/app-header.cmp.js'
 import appHomePage from './pages/app-home.cmp.js'
+import userMsg from './cmps/user-msg.cmp.js'
 
 const options = {
     template: `
     <section>
         <app-header/>
+        <user-msg/>
         <router-view/>
     </section>
 `,
@@ -19,7 +21,8 @@ const options = {
     unmounted() { },
     components: {
         appHeader,
-        appHomePage
+        appHomePage,
+        userMsg
     },
 };
 

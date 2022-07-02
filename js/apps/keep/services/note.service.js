@@ -8,7 +8,6 @@ const notesDb = storageService.load(NOTE_KEY) || _createDefaultNote()
 
 export const noteService = {
     getNotes,
-    createNote,
     addNote,
     remove,
     get,
@@ -18,28 +17,6 @@ export const noteService = {
 function getNotes() {
     return Promise.resolve(notesDb)
 }
-
-function createNote(noteInfo) {
-    const note = {
-        type: noteInfo.type,
-        noteType: noteInfo.noteType,
-        isPinned: noteInfo.isPinned,
-        info: {
-            title: noteInfo.info.title,
-            txt: noteInfo.info.txt,
-            img: noteInfo.info.img,
-            video: noteInfo.info.video,
-            todos: noteInfo.info.todos,
-        },
-        style: {
-            backgroundColor: '#eee'
-        }
-    }
-    notesDb.unshift(note)
-    storageService.store(NOTE_KEY, notesDb)
-    return Promise.resolve()
-}
-
 
 function addNote(note) {
     const newNote = {

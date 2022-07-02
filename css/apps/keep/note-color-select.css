@@ -7,12 +7,14 @@
   padding-top: 0.5rem;
   background-color: rgba(195, 195, 195, 0.903);
   padding: 0.5rem;
+  border-radius: 2rem;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.364);
 }
 
 .note-menu-color-btn-container:hover > .note-color-select {
   opacity: 1;
   position: absolute;
-  transform: translateY(-205%) translateX(-18%);
+  transform: translateY(-208%) translateX(-11%);
 }
 
 .note-colors-palette {

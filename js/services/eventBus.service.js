@@ -26,8 +26,10 @@ function emit(eventName, data) {
 // we got 2 funcs on and emit
 export const eventBus = { on, emit };
 
-
-
+// USER-MSG EVENT //
+export function showUserMsg(msg) {
+    emit('show-msg', msg)
+}
 
 // NOTE EVENT //
 
