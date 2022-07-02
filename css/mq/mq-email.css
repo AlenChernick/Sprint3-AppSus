@@ -1,3 +1,21 @@
+@media (max-width: 1600px) {
+  .email-preview {
+    height: 150px;
+    gap: 10px;
+    font-size: 0.9rem;
+  }
+
+  ul {
+    padding-inline-start: 20px;
+  }
+  .new-mail-modal {
+    width: 70%;
+  }
+  .mail-body-input {
+    height: 21.5rem;
+  }
+}
+
 @media (max-width: 1100px) {
   .email-preview {
     height: 150px;
@@ -70,9 +88,21 @@
   .email-list-container {
     width: 97%;
   }
+
+  .new-mail-modal {
+    width: 70%;
+  }
+
+  .mail-body-input {
+    height: 24.5rem;
+  }
 }
 
 @media (max-width: 630px) {
+  body {
+    overflow-x: hidden;
+  }
+
   .mail-filter input {
     width: 100%;
   }
@@ -81,7 +111,6 @@
   }
   .new-mail-modal {
     /* right: auto; */
-    width: 15rem;
     margin-inline-start: 100px;
   }
   .mail-side-bar {
