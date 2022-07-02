@@ -92,3 +92,12 @@ export function eventSendMailToNote(mail) {
     emit('eventSendMailToNote', mail)
 }
 
+export function replayMail(emailId) {
+    emit('replayMail', emailId)
+}
+
+
+export function eventFillMailReplay(email){
+    emit('eventFillMailReplay', email)
+
+}

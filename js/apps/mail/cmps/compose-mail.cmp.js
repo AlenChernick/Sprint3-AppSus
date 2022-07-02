@@ -1,4 +1,6 @@
 import { utilService } from "../../../services/util.service.js" 
+import { eventBus } from "../../../services/eventBus.service.js"
+
 
 export default {
   name: "compose-mail",
@@ -90,8 +92,15 @@ export default {
       },
     }
   },
-  created() {},
-  methods: {},
+  created() {
+    eventBus.on("eventFillMailReplay", this.eventFillMailReplay) //iniialize event listener
+
+  },
+  methods: {
+    eventFillMailReplay(email){
+console.log(email);
+    }
+  },
   computed: {},
   unmounted() {},
 }

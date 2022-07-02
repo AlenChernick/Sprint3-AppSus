@@ -55,8 +55,22 @@ export default {
     eventBus.on("addStar", this.addStar) //iniialize event listener
     eventBus.on("updateUnRead", this.updateUnRead) //iniialize event listener
     eventBus.on("updateUnRead", this.updateUnRead) //iniialize event listener
+    eventBus.on("updateUnRead", this.updateUnRead) //iniialize event listener
+    eventBus.on("replayMail", this.eventReplayMail) //iniialize event listener
+
+    // emit('replayMail', emailId)
+
   },
   methods: {
+    eventReplayMail(emailId){
+      this.newMailModl = !this.newMailModl
+      this.$emit("closeOptionsModal")
+      
+      const idx = this.emails.findIndex((email) => email.id === emailId)
+      this.eventFillMailReplay('eventFillMailReplay',emails[idx])
+
+
+    },
 
     updateMailFromNote(email) {
       this.emails.unshift(email)

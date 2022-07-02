@@ -1,4 +1,4 @@
-import { eventBus, updateUnRead, closeExtendForUnread, respondMail } from "../../../services/eventBus.service.js"
+import { eventBus, updateUnRead, closeExtendForUnread, respondMail,replayMail } from "../../../services/eventBus.service.js"
 import { mailService } from "../services/mail.service.js"
 export default {
     props: ['emailId'],
@@ -28,6 +28,7 @@ export default {
         onReplay(emailId) {
             respondMail('emailId', emailId)
             this.$emit("closeOptionsModal")
+             replayMail(emailId)
 
         },
         onSendMailToNotes(emailId) {
