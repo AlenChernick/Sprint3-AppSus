@@ -100,20 +100,23 @@ export default {
     addStar(emailId) {
       mailService.updateIsStar(emailId).then((emails) => (this.emails = emails))
     },
+    // updateNoteInMail(mailFromNote) {
+    //   mailFromNote.then((emails) => this.emails.unshift(emails))
+    // },
     filterby(filter) {
       this.text = filter.text.toUpperCase()
       this.filter = filter.state
     },
     setFilter({ txt, state, read, stared }) {
-      if (txt){
-         this.filterBy.txt = txt
-         if(txt === 'all')  this.filterBy.txt = ''      
-        }
-               if (state) this.filterBy.state = state
+      if (txt) {
+        this.filterBy.txt = txt
+        if (txt === 'all') this.filterBy.txt = ''
+      }
+      if (state) this.filterBy.state = state
       if (read) {
-         this.filterBy.read = read
-        if(read === 'all')  this.filterBy.read = ''
-        }
+        this.filterBy.read = read
+        if (read === 'all') this.filterBy.read = ''
+      }
       this.filterBy.stared = stared
     },
   },
@@ -144,29 +147,8 @@ export default {
         if (read === "read") emails = emails.filter((email) => email.isRead)
         else emails = emails.filter((email) => !email.isRead)
       }
-
       return emails
-      // if (this.filter === "star")
-      //   emails = emails.filter(
-      //     (mail) => mail.isStar === true && mail.name.includes(this.text)
-      //   )
-      // if (this.filter === "read")
-      //   emails = emails.filter(
-      //     (mail) => mail.isRead === true && mail.name.includes(this.text)
-      //   )
-      // if (this.filter === "unread")
-      //   emails = emails.filter(
-      //     (mail) => mail.isRead === false && mail.name.includes(this.text)
-      //   )
-      // return this.emails.filter((mail) => this.filter === mail.state )
-      // emails = emails.filter(
-      //   (mail) =>
-      //     this.filter === mail.state &&
-      //     mail.name.toUpperCase().includes(this.text)
-      // )
-      return emails
-      // return tempArr.filter((mail) => mail.name.includes(this.text))
     },
   },
-  unmounted() {},
+  unmounted() { },
 }
