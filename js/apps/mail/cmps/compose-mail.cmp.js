@@ -1,4 +1,4 @@
-import { utilService } from "../../../services/util.service.js" 
+import { utilService } from "../../../services/util.service.js"
 
 export default {
   name: "compose-mail",
@@ -7,7 +7,6 @@ export default {
  <section  class="new-mail-modal">
  <div class="mail-modal-header flex space-between">
       <div>New Message</div>
-      <button class="send-btn">Trow</button>
     </div>
     <form class="new-mail-content flex flex-column">
       <div class="mail-input-conteiner">
@@ -79,8 +78,8 @@ export default {
         to: '',
         cc: null,
         bbc: null,
-        subject:'',
-        body:'',
+        subject: '',
+        body: '',
         createdAt: utilService.getFormattedNowDate(),
         isRead: true,
         state: "sent",
@@ -90,10 +89,10 @@ export default {
       },
     }
   },
-  created() {},
+  created() { },
   methods: {},
   computed: {},
-  unmounted() {},
+  unmounted() { },
 }
 // eventBus.on("replatMail", this.respondMail) //iniialize event listener
 // respondMail() {
