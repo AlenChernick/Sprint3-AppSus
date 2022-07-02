@@ -68,14 +68,19 @@ function saveMail(mail) {
   return save(mail)
 }
 
-function save(mails) {
-  return asyncStorageService.post(MAIL_KEY, mails)
+function save(mail) {
+  return asyncStorageService.post(MAIL_KEY, mail)
 
 }
 
 function getMailFromNote(mail) {
-  const mailFromNote = saveMail(mail)
-  updateNoteInMail(mailFromNote)
+  console.log(mail);
+  saveMail(mail)
+ 
+
+
+//   let flag = updateNoteInMail(mailFromNote)
+//   console.log('gfdfdgfdg');
 }
 
 

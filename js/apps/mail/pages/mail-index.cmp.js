@@ -49,16 +49,16 @@ export default {
   created() {
     mailService.getMails().then((emails) => (this.emails = emails))
 
+  
     eventBus.on("deletedMail", this.onDeleteMail) //iniialize event listener
     eventBus.on("updateIsRead", this.updateIsRead) //iniialize event listener
     eventBus.on("newMail", this.newMail) //iniialize event listener
     eventBus.on("addStar", this.addStar) //iniialize event listener
     eventBus.on("updateUnRead", this.updateUnRead) //iniialize event listener
     eventBus.on("updateUnRead", this.updateUnRead) //iniialize event listener
-    eventBus.on("eventSentNoteToMail", this.getNotes) //iniialize event listener
-
   },
   methods: {
+    
     onDeleteMail(emailId) {
       mailService
         .removeEmail(emailId)
@@ -73,7 +73,7 @@ export default {
     },
 
     onDraft() {
-      console.log("Drafted")
+      // console.log("Drafted")
       this.newMailModl = !this.newMailModl
     },
     updateIsRead(emailId) {
@@ -101,14 +101,6 @@ export default {
       mailService.updateIsStar(emailId).then((emails) => (this.emails = emails))
     },
 
-    getNotes(){
-      // console.log('note');
-      // mailService.getMails().then((emails) => {this.emails = emails
-      // console.log(emails)})
-    },
-    updateNoteInMail(mail){
-// console.log(mail);
-    },
 
     setFilter({ txt, state, read, stared }) {
       if (txt) {
@@ -153,5 +145,5 @@ export default {
       return emails
     },
   },
-  unmounted() { },
+  unmounted() {},
 }

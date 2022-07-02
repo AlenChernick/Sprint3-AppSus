@@ -23,10 +23,7 @@ export default {
     }
   },
   created() {
-    // eventBus.on("sentPage", this.sentPage) //iniialize event listener
-    // eventBus.on("inboxPage", this.inboxPage) //iniialize event listener
-    // eventBus.on("starPage", this.starPage) //iniialize event listener
-    // eventBus.on("draftPage", this.draftPage) //iniialize event listener
+
   },
   methods: {
     onFilterby() {
@@ -37,19 +34,7 @@ export default {
       }
       this.$emit("filtered",filterBy)
     },
-    //     sentPage(){
-    //       this.filterBy.state = 'sent'
-    //   },
-    //   inboxPage(){
-    //     this.filterBy.state = 'inbox'
-    // },
-    // starPage(){
-    //   this.filterBy.state = 'star'
-    // },
-    // draftPage(){
-    //   console.log('draft');
-    //   this.filterBy.state = 'draft'
-    // },
+
   },
   computed: {},
   unmounted() {},
