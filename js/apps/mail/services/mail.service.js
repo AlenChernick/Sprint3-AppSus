@@ -90,6 +90,8 @@ function _initEmails() {
   emails[5].isRead = true
   emails[8].isRead = true
   storageService.store(MAIL_KEY, emails)
+  console.log(emails);
+
   return emails
 }
 

@@ -14,7 +14,7 @@ export default {
         <label for="To">To</label>
         <input
           class="mail-inputs"
-          v-model="mailToSend.to"
+          v-model="mailToSend.name"
           type="text"
           name=""
           id=""
@@ -31,7 +31,7 @@ export default {
         />
       </div>
       <div class="mail-input-conteiner">
-        <label for="To">Bcc</label>
+        <label for="Bbc">Bcc</label>
         <input
           class="mail-inputs"
           v-model="mailToSend.bcc"
@@ -76,11 +76,11 @@ export default {
     return {
       mailToSend: {
         name: "me",
-        to: null,
+        to: '',
         cc: null,
         bbc: null,
-        subject: null,
-        body: null,
+        subject:'',
+        body:'',
         createdAt: utilService.getFormattedNowDate(),
         isRead: true,
         state: "sent",
