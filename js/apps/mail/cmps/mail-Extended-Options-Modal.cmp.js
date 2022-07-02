@@ -23,13 +23,19 @@ methods: {
     onMarkUnread(emailId){
         updateUnRead(emailId)
         closeExtendForUnread('closeExtendForUnread')
+        this.$emit("closeOptionsModal")
+
     },
     onReplay(emailId){
         respondMail('emailId',emailId)
+        this.$emit("closeOptionsModal")
+
     },
     onSendMailToNotes(emailId){
+        console.log(emailId);
+        this.$emit("closeOptionsModal")
         mailService.sendMailToNotes(emailId)
-        this.$smit('showOptions')
+        
        
     }
 },
