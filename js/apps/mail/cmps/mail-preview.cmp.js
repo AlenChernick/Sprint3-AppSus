@@ -1,6 +1,7 @@
 import mailExtend from "./mail-extend.js"
 import longText from "./long-text.cmp.js"
 import { updateIsRead, addStar } from "../../../services/eventBus.service.js"
+import { eventBus } from "../../../services/eventBus.service.js"
 
 export default {
   props: ["email"],
@@ -24,7 +25,7 @@ export default {
 `,
   components: {
     mailExtend,
-    longText
+    longText,
   },
 
   data() {
@@ -34,13 +35,14 @@ export default {
     }
   },
   created() {
-    // this.isStar = this.email.isStar
-
-
+    eventBus.on("closeExtendForUnread", this.closeExtendForUnread) //When user click on makeUnred->close extended
   },
   methods: {
     onRemoveRead(emailId) {
       updateIsRead(emailId)
+    },
+    closeExtendForUnread() {
+      this.isExtend = false
     },
     onAddStar(emailId) {
       addStar(emailId)
@@ -56,12 +58,12 @@ export default {
     onExtend() {
       return true
     },
-    addStarColor(){
+    addStarColor() {
       return {
-        'is-star-on':this.email.isStar,
+        "is-star-on": this.email.isStar,
         // 'is-star-off': !this.email.isStar,
       }
-    }
+    },
   },
   watch: {
     // isExtend(){

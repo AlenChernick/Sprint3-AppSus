@@ -1,4 +1,5 @@
 import { deleteMail } from "../../../services/eventBus.service.js"
+import mailExtendedOptionsModal from "../cmps/mail-Extended-Options-Modal.cmp.js"
 
 export default {
   props: ["email"],
@@ -7,8 +8,13 @@ export default {
 <div class="extended-mail">
   <div class="extended-mail-header">
     <div  class="extended-mail-title" style="font-weight: 800; font-size: 1.2rem"> {{email.subject}} </div>
+    <div class="extended-options">
+    <button class="extended-more" @click="onOptionsModal(email.id) "  @click='showOptions=!showOptions'> <i class="fa-solid fa-ellipsis"></i> </button>
+    <mail-extended-options-modal v-if="showOptions" :emailId="email.id">    </mail-extended-options-modal>
+
     <button class="extended-delete" @click="onDeleteMail(email.id)"><i class="fa-solid fa-trash"></i>    </button>
-   </div>
+    </div> 
+  </div>
 
   <div class="extend-mail-content">
     <span style="font-weight: 600; font-size: 0.9rem">{{email.name}}</span>
@@ -19,14 +25,22 @@ export default {
 </div>
 
 `,
+components: {
+  mailExtendedOptionsModal
+},
   data() {
-    return {}
+    return {
+      showOptions:false,
+    }
   },
   created() {},
   methods: {
     onDeleteMail(emailId) {
       deleteMail(emailId) //eventbus
     },
+    onOptionsModal(emailId){
+console.log('onOptionsModal');
+    }
   },
   computed: {
     getEmailAdress(){

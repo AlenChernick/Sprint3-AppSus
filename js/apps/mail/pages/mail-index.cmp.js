@@ -127,8 +127,8 @@ export default {
     eventBus.on("starPage", this.starPage) //iniialize event listener
     eventBus.on("draftPage", this.draftPage) //iniialize event listener
     eventBus.on("addStar", this.addStar) //iniialize event listener
-    // eventBus.on("addStar", this.addStar) //iniialize event listener
-    // eventBus.on("filterTxt", this.filterTxt) //iniialize event listener
+    eventBus.on("updateUnRead", this.updateUnRead) //iniialize event listener
+
   },
   methods: {
     onDeleteMail(emailId) {
@@ -145,6 +145,9 @@ export default {
     },
     updateIsRead(emailId) {
       this.emails = mailService.updateIsRead(emailId)
+    },
+    updateUnRead(emailId){
+      this.emails = mailService.updateIsUnRead(emailId)
     },
     newMail() {
       this.newMailModl = true
@@ -175,15 +178,17 @@ export default {
       mailService.updateIsStar(emailId).then((emails) => (this.emails = emails))
     },
     filterby(filter) {
-      console.log('test');
       this.text = filter.text.toUpperCase()
       this.filter = filter.state
-      console.log(filter.state);
     },
   },
   computed: {
     emailsToShow() {
       if (this.filter === "star") return this.emails.filter((mail) => mail.isStar === true && mail.name.includes(this.text)
+      )
+      if (this.filter === "read") return this.emails.filter((mail) => mail.isRead === true && mail.name.includes(this.text)
+      )
+      if (this.filter === "unread") return this.emails.filter((mail) => mail.isRead === false && mail.name.includes(this.text)
       )
       // return this.emails.filter((mail) => this.filter === mail.state )
       return this.emails.filter((mail) => this.filter === mail.state && mail.name.toUpperCase().includes(this.text)

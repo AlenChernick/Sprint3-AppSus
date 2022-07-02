@@ -89,7 +89,11 @@ export function draftPage() {
 export function addStar(emailId) {
     emit('addStar',emailId)
 }
-// export function filterTxt(txt){
-//     console.log('event');
-//     emit('filterTxt',txt)
-// }
+export function updateUnRead(emailId){
+    emit('updateUnRead',emailId)
+}
+
+export function closeExtendForUnread(){
+    console.log('event');
+    emit('closeExtendForUnread')
+}
