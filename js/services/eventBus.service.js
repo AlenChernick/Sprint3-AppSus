@@ -51,7 +51,7 @@ export function eventUpdateNote(note) {
     emit('eventUpdateNote', note)
 }
 
-export function eventSentNoteToMail(note) {
+export function eventSendNoteToMail(note) {
     emit('eventSendNoteToMail', note)
 }
 

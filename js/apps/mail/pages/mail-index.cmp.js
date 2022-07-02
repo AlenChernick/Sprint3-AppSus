@@ -48,8 +48,7 @@ export default {
   },
   created() {
     mailService.getMails().then((emails) => (this.emails = emails))
-
-  
+    eventBus.on('eventSendNoteToMail', this.updateMailFromNote)
     eventBus.on("deletedMail", this.onDeleteMail) //iniialize event listener
     eventBus.on("updateIsRead", this.updateIsRead) //iniialize event listener
     eventBus.on("newMail", this.newMail) //iniialize event listener
@@ -58,7 +57,11 @@ export default {
     eventBus.on("updateUnRead", this.updateUnRead) //iniialize event listener
   },
   methods: {
-    
+
+    updateMailFromNote(email) {
+      this.emails.push(email)
+    },
+
     onDeleteMail(emailId) {
       mailService
         .removeEmail(emailId)
@@ -100,7 +103,6 @@ export default {
     addStar(emailId) {
       mailService.updateIsStar(emailId).then((emails) => (this.emails = emails))
     },
-
 
     setFilter({ txt, state, read, stared }) {
       if (txt) {

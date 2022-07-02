@@ -1,4 +1,4 @@
-import { eventDeleteNote, eventUpdateNote, eventAddNote, eventSentNoteToMail } from '../../../services/eventBus.service.js'
+import { eventDeleteNote, eventUpdateNote, eventAddNote, eventSendNoteToMail } from '../../../services/eventBus.service.js'
 import { utilService } from '../../../services/util.service.js'
 import { mailService } from '../../mail/services/mail.service.js'
 import noteColorSelect from '../cmps/note-color-select.cmp.js'
@@ -68,7 +68,7 @@ export default {
                 isStar: false,
             }
             mailService.getMailFromNote(email)
-            eventSentNoteToMail(email)
+            eventSendNoteToMail(email)
         }
     },
     computed: {
