@@ -91,3 +91,4 @@ export function respondMail(emailId) {
 export function eventSendMailToNote(mail) {
     emit('eventSendMailToNote', mail)
 }
+

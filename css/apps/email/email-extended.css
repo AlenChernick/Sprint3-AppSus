@@ -1,6 +1,6 @@
 .extended-mail{
-    /* padding: 0px 10px 20px 20px; */
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: center;
     align-items: start;
@@ -73,7 +73,7 @@ cursor: pointer;
     }
 
     .extended-options-modal{
-        position: fixed;
+        position: absolute;
         background-color: rgb(230, 213, 213);
         width: 10rem;
         right:3.4rem;
