@@ -7,7 +7,7 @@ export default {
   template: `
  <section class="mail-side-bar flex flex-column space-evenly" v-if='emails'>
 
-<div @click="onNewMail" class="compose-btn"><i class="fa-solid fa-plus"></i> Compose</div>
+    <div @click="onNewMail" class="compose-btn"><i class="fa-solid fa-plus"></i> Compose</div>
     <div  @click="filter('inbox')" class="inbox-btn side-bar-btns">  <i class="fa-solid fa-inbox"></i> {{spaceStr}} {{CountunReaden}}</div>
     <div  @click="filter('stared')" class="starred-btn side-bar-btns"><i class="fa-solid fa-star"></i>{{spaceStr1}} Starred {{ CountunStar}}</div>
     <div  @click="filter('sent')" class="sent-btn side-bar-btns"><i class="fa-solid fa-share-from-square"></i>{{spaceStr}} Sent  {{CountunSent}} </div>
