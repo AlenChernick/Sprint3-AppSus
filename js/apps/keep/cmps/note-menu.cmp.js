@@ -60,7 +60,7 @@ export default {
                 subject: 'Note From Keep App',
                 body: emailBody,
                 to: "",
-                createdAt: Date.now(),
+                createdAt: utilService.getFormattedNowDate(),
                 isRead: false,
                 state: 'inbox',
                 cc: null,
