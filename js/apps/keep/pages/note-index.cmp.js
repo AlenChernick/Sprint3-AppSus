@@ -24,7 +24,6 @@ export default {
             .then(notes => {
                 this.notes = notes
             })
-
         eventBus.on('eventAddNote', this.addNote)
         eventBus.on('eventDeleteNote', this.deleteNote)
         eventBus.on('eventUpdateNote', this.updateNote)
@@ -51,7 +50,7 @@ export default {
         },
         setFilter(filter) {
             this.filter = JSON.parse(JSON.stringify(filter))
-        }
+        },
 
     },
     computed: {
