@@ -1,9 +1,9 @@
 import { mailService } from "../services/mail.service.js"
+import { eventBus } from "../../../services/eventBus.service.js"
+import { utilService } from "../../../services/util.service.js"
 import mailList from "../cmps/mail-list.cmp.js"
 import mailSideBar from "../cmps/mail-side-bar.cmp.js"
 import mailFilter from "../cmps/mail-filter.cmp.js"
-import { eventBus } from "../../../services/eventBus.service.js"
-import { utilService } from "../../../services/util.service.js"
 import composeMail from "../cmps/compose-mail.cmp.js"
 
 export default {
@@ -54,7 +54,9 @@ export default {
     eventBus.on("newMail", this.newMail) //iniialize event listener
     eventBus.on("addStar", this.addStar) //iniialize event listener
     eventBus.on("updateUnRead", this.updateUnRead) //iniialize event listener
-    eventBus.on("replatMail", this.respondMail) //iniialize event listener
+    eventBus.on("updateUnRead", this.updateUnRead) //iniialize event listener
+    eventBus.on("eventSentNoteToMail", this.eventSentNoteToMail) //iniialize event listener
+
   },
   methods: {
     onDeleteMail(emailId) {
@@ -69,9 +71,7 @@ export default {
           // showErrorMsg('Failed to remove')
         })
     },
-    respondMail() {
-      console.log("respondMail index")
-    },
+
     onDraft() {
       console.log("Drafted")
       this.newMailModl = !this.newMailModl
@@ -100,20 +100,25 @@ export default {
     addStar(emailId) {
       mailService.updateIsStar(emailId).then((emails) => (this.emails = emails))
     },
-    filterby(filter) {
-      this.text = filter.text.toUpperCase()
-      this.filter = filter.state
+    // filterby(filter) {
+    //   this.text = filter.text.toUpperCase()
+    //   this.filter = filter.state
+    // },
+    eventSentNoteToMail(){
+      mailService.getMails().then((emails) => (this.emails = emails))
     },
+  
+
     setFilter({ txt, state, read, stared }) {
-      if (txt){
-         this.filterBy.txt = txt
-         if(txt === 'all')  this.filterBy.txt = ''      
-        }
-               if (state) this.filterBy.state = state
+      if (txt) {
+        this.filterBy.txt = txt
+        if (txt === "all") this.filterBy.txt = ""
+      }
+      if (state) this.filterBy.state = state
       if (read) {
-         this.filterBy.read = read
-        if(read === 'all')  this.filterBy.read = ''
-        }
+        this.filterBy.read = read
+        if (read === "all") this.filterBy.read = ""
+      }
       this.filterBy.stared = stared
     },
   },

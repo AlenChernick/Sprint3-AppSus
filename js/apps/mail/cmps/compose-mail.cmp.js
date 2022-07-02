@@ -95,3 +95,7 @@ export default {
   computed: {},
   unmounted() {},
 }
+// eventBus.on("replatMail", this.respondMail) //iniialize event listener
+// respondMail() {
+//   console.log("respondMail index")
+// },

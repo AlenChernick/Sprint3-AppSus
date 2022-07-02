@@ -70,22 +70,22 @@ export function updateIsRead(mailId) {
 export function newMail() {
     emit('newMail')
 }
-//Chenge filter
-export function sentPage() {
-    emit('sentPage')
-}
-//Chenge filter
-export function inboxPage() {
-    emit('inboxPage')
-}
-//Chenge filter
-export function starPage() {
-    emit('starPage')
-}
-//Chenge filter
-export function draftPage() {
-    emit('draftPage')
-}
+// //Chenge filter
+// export function sentPage() {
+//     emit('sentPage')
+// }
+// //Chenge filter
+// export function inboxPage() {
+//     emit('inboxPage')
+// }
+// //Chenge filter
+// export function starPage() {
+//     emit('starPage')
+// }
+// //Chenge filter
+// export function draftPage() {
+//     emit('draftPage')
+// }
 
 //Chenge filter
 export function addStar(emailId) {
