@@ -33,7 +33,5 @@
 @import 'apps/keep/note-filter.css';
 
 /* MEDIA QUERIES */
-@import 'mq/mq.css';
-@import '/css/mq/mq.email.css'
-
-
+@import 'mq/mq-keep.css';
+@import 'mq/mq-email.css';
