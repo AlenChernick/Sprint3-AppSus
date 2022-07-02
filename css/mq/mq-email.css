@@ -1,3 +1,21 @@
+@media (max-width: 1600px) {
+  .email-preview {
+    height: 150px;
+    gap: 10px;
+    font-size: 0.9rem;
+  }
+
+  ul {
+    padding-inline-start: 20px;
+  }
+  .new-mail-modal {
+    width: 70%;
+  }
+  .mail-body-input {
+    height: 21.5rem;
+  }
+}
+
 @media (max-width: 1100px) {
   .email-preview {
     height: 150px;
@@ -5,13 +23,11 @@
     font-size: 0.9rem;
   }
 
-
   ul {
     padding-inline-start: 20px;
   }
   .new-mail-modal {
-    /* right: auto; */
-    width: 23rem;
+    width: 23%;
   }
 }
 
@@ -64,7 +80,6 @@
     font-size: 0.8rem;
   }
   .send-delete-row {
-
     padding-bottom: 40px;
   }
   .mail-body-input {
@@ -72,10 +87,22 @@
   }
   .email-list-container {
     width: 97%;
-}
+  }
+
+  .new-mail-modal {
+    width: 70%;
+  }
+
+  .mail-body-input {
+    height: 24.5rem;
+  }
 }
 
 @media (max-width: 630px) {
+  body {
+    overflow-x: hidden;
+  }
+
   .mail-filter input {
     width: 100%;
   }
@@ -84,7 +111,6 @@
   }
   .new-mail-modal {
     /* right: auto; */
-    width: 15rem;
     margin-inline-start: 100px;
   }
   .mail-side-bar {
@@ -101,18 +127,16 @@
   .compose-btn {
     grid-row: span 2;
     margin: 0;
-    margin-bottom:10px;
+    margin-bottom: 10px;
   }
   .side-bar-btns {
     padding: 1rem;
     margin: 0;
   }
-  
 }
 
-
 @media (max-width: 500px) {
-    .side-bar-btns {
-       font-size: 0.85rem;
-      }
+  .side-bar-btns {
+    font-size: 0.85rem;
+  }
 }

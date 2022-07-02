@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 import { utilService } from "../../../services/util.service.js" 
 import { eventBus } from "../../../services/eventBus.service.js"
 
+=======
+import { utilService } from "../../../services/util.service.js"
+>>>>>>> a363535346484258ea167f44ebac6c508141d1ce
 
 export default {
   name: "compose-mail",
@@ -9,7 +13,6 @@ export default {
  <section  class="new-mail-modal">
  <div class="mail-modal-header flex space-between">
       <div>New Message</div>
-      <button class="send-btn">Trow</button>
     </div>
     <form class="new-mail-content flex flex-column">
       <div class="mail-input-conteiner">
@@ -81,8 +84,8 @@ export default {
         to: '',
         cc: null,
         bbc: null,
-        subject:'',
-        body:'',
+        subject: '',
+        body: '',
         createdAt: utilService.getFormattedNowDate(),
         isRead: true,
         state: "sent",
@@ -92,6 +95,7 @@ export default {
       },
     }
   },
+<<<<<<< HEAD
   created() {
     eventBus.on("eventFillMailReplay", this.eventFillMailReplay) //iniialize event listener
 
@@ -101,8 +105,12 @@ export default {
 console.log(email);
     }
   },
+=======
+  created() { },
+  methods: {},
+>>>>>>> a363535346484258ea167f44ebac6c508141d1ce
   computed: {},
-  unmounted() {},
+  unmounted() { },
 }
 // eventBus.on("replatMail", this.respondMail) //iniialize event listener
 // respondMail() {
