@@ -5,11 +5,7 @@
     font-size: 0.9rem;
   }
 
-  .mail-side-bar {
-    /* width: 9rem; */
-    /* height: 250px; */
-    /* padding-inline-start: 5px; */
-  }
+
   ul {
     padding-inline-start: 20px;
   }
@@ -51,9 +47,9 @@
     flex-direction: column;
     justify-content: space-between;
     position: absolute;
-    top: 3.7rem;
+    top: 5.7rem;
     z-index: 1;
-    height: 400px;
+    /* height: 400px; */
     background-color: rgb(213, 240, 240);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border-bottom: 1px solid rgba(213, 240, 240, 0.313);
@@ -68,13 +64,15 @@
     font-size: 0.8rem;
   }
   .send-delete-row {
-    /* right: auto;  */
-    /* width: 30rem; */
+
     padding-bottom: 40px;
   }
   .mail-body-input {
     padding: 0;
   }
+  .email-list-container {
+    width: 97%;
+}
 }
 
 @media (max-width: 630px) {
@@ -109,6 +107,7 @@
     padding: 1rem;
     margin: 0;
   }
+  
 }
 
 
