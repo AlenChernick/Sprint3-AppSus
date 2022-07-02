@@ -22,13 +22,19 @@ export default {
         onMarkUnread(emailId) {
             updateUnRead(emailId)
             closeExtendForUnread('closeExtendForUnread')
+            this.$emit("closeOptionsModal")
+
         },
         onReplay(emailId) {
             respondMail('emailId', emailId)
+            this.$emit("closeOptionsModal")
+
         },
         onSendMailToNotes(emailId) {
             mailService.sendMailToNotes(emailId)
             eventBus.emit('show-msg', { txt: 'Email Sended To Notes Successfully', link: '/keep', linkTxt: 'Check It' })
+            this.$emit("closeOptionsModal")
+
         }
     },
     computed: {},

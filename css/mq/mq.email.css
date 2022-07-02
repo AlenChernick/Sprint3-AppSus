@@ -3,6 +3,15 @@
  .email-preview{
     height:150px;
     gap: 10px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
  }
+
+ .mail-side-bar {
+    width: 9rem;
+    height: 250px;
+    padding-inline-start:5px;
+  }
+  ul{
+    padding-inline-start: 20px;
+  }
 }
