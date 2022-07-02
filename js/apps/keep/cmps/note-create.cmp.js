@@ -5,18 +5,20 @@ export default {
     <section class="create-note">
         <div class="note-create-container">
             <input class="note-txt-input" v-model="newVal" :placeholder="placeholderText" @keyup.enter="createNote">
-            <button class="note-create-btn note-text-btn" @click="changeNoteType('noteText')">
-            <i class="note-create-btn-icon far fa-comment"></i>
-            </button>
-            <button class="note-create-btn note-img-btn" @click="changeNoteType('noteImg')">
-            <i class="note-create-btn-icon far fa-image"></i>
-            </button>
-            <button class="note-create-btn note-video-btn" @click="changeNoteType('noteVideo')">
-            <i class="note-create-btn-icon fab fa-youtube"></i>
-            </button>
-            <button class="note-create-btn note-todo-btn" @click="changeNoteType('noteTodos')">
-            <i class="note-create-btn-icon fas fa-list-ul"></i>
-            </button>
+            <div class="note-create-btns-container">
+                <button class="note-create-btn note-text-btn" @click="changeNoteType('noteText')">
+                    <i class="note-create-btn-icon far fa-comment"></i>
+                </button>
+                <button class="note-create-btn note-img-btn" @click="changeNoteType('noteImg')">
+                    <i class="note-create-btn-icon far fa-image"></i>
+                </button>
+                <button class="note-create-btn note-video-btn" @click="changeNoteType('noteVideo')">
+                    <i class="note-create-btn-icon fab fa-youtube"></i>
+                </button>
+                <button class="note-create-btn note-todo-btn" @click="changeNoteType('noteTodos')">
+                    <i class="note-create-btn-icon fas fa-list-ul"></i>
+                </button>
+            </div>
         </div>
     </section>
     `,

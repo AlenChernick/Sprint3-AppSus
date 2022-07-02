@@ -1,16 +1,24 @@
+.note-create-container {
+  margin: 2rem auto;
+  position: relative;
+}
+
+.note-create-btns-container {
+  position: absolute;
+  top: 0.9rem;
+  right: 1rem;
+}
+
 .note-txt-input {
   width: 35rem;
   padding: 0.7rem 1rem;
   font-size: 1.5rem;
-  margin-inline-start: 7.5rem;
 }
 
 .note-create-btn {
   font-size: 1.5rem;
   border: none;
-  position: relative;
-  right: 9.5rem;
-  background-color: white;
+  background-color: transparent;
   cursor: pointer;
   color: black;
   transition: color 0.3s;
