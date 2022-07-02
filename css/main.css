@@ -21,7 +21,6 @@
 @import 'apps/email/email-filter.css';
 @import 'apps/email/email-extended.css';
 
-
 /* KEEP APP */
 @import 'apps/keep/note-app.css';
 @import 'apps/keep/note-preview.css';
@@ -31,6 +30,7 @@
 @import 'apps/keep/note-template.css';
 @import 'apps/keep/note-color-select.css';
 @import 'apps/keep/note-edit.css';
+@import 'apps/keep/note-filter.css';
 
 /* MEDIA QUERIES */
 @import 'mq/mq.css';

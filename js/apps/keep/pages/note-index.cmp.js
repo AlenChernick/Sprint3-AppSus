@@ -8,8 +8,8 @@ import { eventBus } from '../../../services/eventBus.service.js'
 export default {
     template: `
     <section class="note-app">
-        <note-filter @filterByType="setFilter"/>
-        <create-note/>
+            <note-filter @filterByType="setFilter"/>
+            <create-note/>
         <note-list :notes="notesToShow"/>
     </section>
 `,
@@ -57,6 +57,7 @@ export default {
     computed: {
         notesToShow() {
             if (!this.filter) return this.notes
+            if (this.filter.noteType === '') return this.notes
             let notes = this.notes
             return notes.filter((note) => this.filter.noteType === note.noteType)
         }
