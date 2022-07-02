@@ -15,7 +15,7 @@ export default {
        <div v-bind:class='ifReadColor'> {{email.name}} </div>
        <div v-bind:class='ifReadColor'> {{email.subject}} </div>
        <!-- <div>{{email.body}}(hard coded for now) </div> -->
-       <long-text v-bind:class='ifReadColor' :text="email.body"></long-text>
+       <!-- <long-text v-bind:class='ifReadColor' :text="email.body"></long-text> -->
        <div> {{email.createdAt}} </div>
          </div>
       <mail-extend v-if="isExtend"  :email='email' ></mail-extend>

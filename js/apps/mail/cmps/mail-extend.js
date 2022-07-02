@@ -9,7 +9,7 @@ export default {
   <div class="extended-mail-header">
     <div  class="extended-mail-title" style="font-weight: 800; font-size: 1.2rem"> {{email.subject}} </div>
     <div class="extended-options">
-    <button class="extended-more" @click="onOptionsModal(email.id) "  @click='showOptions=!showOptions'> <i class="fa-solid fa-ellipsis"></i> </button>
+    <button class="extended-more" @click='showOptions=!showOptions'> <i class="fa-solid fa-ellipsis"></i> </button>
     <mail-extended-options-modal v-if="showOptions" :emailId="email.id">    </mail-extended-options-modal>
 
     <button class="extended-delete" @click="onDeleteMail(email.id)"><i class="fa-solid fa-trash"></i>    </button>
@@ -25,12 +25,12 @@ export default {
 </div>
 
 `,
-components: {
-  mailExtendedOptionsModal
-},
+  components: {
+    mailExtendedOptionsModal,
+  },
   data() {
     return {
-      showOptions:false,
+      showOptions: false,
     }
   },
   created() {},
@@ -38,15 +38,14 @@ components: {
     onDeleteMail(emailId) {
       deleteMail(emailId) //eventbus
     },
-    onOptionsModal(emailId){
-console.log('onOptionsModal');
-    }
+    //     onOptionsModal(emailId){
+    // // console.log('onOptionsModal');
+    //     }
   },
   computed: {
-    getEmailAdress(){
-return '\xa0\xa0\xa0\xa0  <'+ this.email.name + '@gmail.com>'
-
-    }
+    getEmailAdress() {
+      return "\xa0\xa0\xa0\xa0  <" + this.email.name + "@gmail.com>"
+    },
   },
   unmounted() {},
 }

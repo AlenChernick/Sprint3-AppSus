@@ -1,4 +1,6 @@
 export default {
+      name:'home-page',
+
     template: `
     <section class="home-page-container">
         <section class="hero-section">

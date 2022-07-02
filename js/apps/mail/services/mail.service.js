@@ -62,8 +62,10 @@ function updateIsStar(emailId){
 
 }
 
-function saveMail(mails) {
-  return save(mails)
+function saveMail(mail) {
+  return  save(mail)
+
+
 }
 
 function save(mails) {
@@ -99,7 +101,6 @@ function _createMails(name) {
           name:name,
           subject:utilService.makeLorem(utilService.getRandom(7, 20)),
           body:  utilService.makeLorem(utilService.getRandom(100, 650)),
-          to: "momo@momo.com",
           createdAt: utilService.getFormattedNowDate(),
           isRead: false,
           state: 'inbox',
@@ -119,11 +120,10 @@ function _createMails(name) {
           name: "Alen",
           subject: utilService.makeLorem(utilService.getRandom(7, 20)),
           body:  utilService.makeLorem(utilService.getRandom(100, 650)),
-          to: "momo@momo.com",
+          to: "Alen@momo.com",
           createdAt: utilService.getFormattedNowDate(),
           isRead: false,
           state: 'sent',
-          to: null,
           cc: null,
           bbc: null,
           isStar: false,
@@ -134,11 +134,10 @@ function _createMails(name) {
           name: "Alon",
           subject: utilService.makeLorem(utilService.getRandom(7, 20)),
           body:  utilService.makeLorem(utilService.getRandom(100, 650)),
-          to: "momo@momo.com",
+          to: "Alon@momo.com",
           createdAt: "2021-02-23",
           isRead: true,
           state: 'sent',
-          to: null,
           cc: null,
           bbc: null,
           isStar: true,

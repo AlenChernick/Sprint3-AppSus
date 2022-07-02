@@ -94,6 +94,9 @@ export function updateUnRead(emailId){
 }
 
 export function closeExtendForUnread(){
-    console.log('event');
     emit('closeExtendForUnread')
+}
+export function respondMail(emailId){
+    console.log('respondMail');
+    emit('respondMail',emailId)
 }
