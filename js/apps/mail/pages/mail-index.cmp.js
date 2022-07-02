@@ -1,5 +1,5 @@
 import { mailService } from "../services/mail.service.js"
-import { eventBus } from "../../../services/eventBus.service.js"
+import { eventBus,eventFillMailReplay } from "../../../services/eventBus.service.js"
 import { utilService } from "../../../services/util.service.js"
 import mailList from "../cmps/mail-list.cmp.js"
 import mailSideBar from "../cmps/mail-side-bar.cmp.js"
@@ -18,7 +18,7 @@ export default {
   </div>
 
   <div v-if="newMailModl">
-      <compose-mail @sended="onSendMail" @canceled="onDraft"/>
+      <compose-mail :sendEmail="sendEmail" @sended="onSendMail" @canceled="onDraft"/>
   </div>
 </section>
 
@@ -44,6 +44,7 @@ export default {
         read: "",
         stared: "",
       },
+      sendEmail:null,
     }
   },
   created() {
@@ -65,9 +66,9 @@ export default {
     eventReplayMail(emailId){
       this.newMailModl = !this.newMailModl
       this.$emit("closeOptionsModal")
-      
       const idx = this.emails.findIndex((email) => email.id === emailId)
-      this.eventFillMailReplay('eventFillMailReplay',emails[idx])
+      this.sendEmail =this.emails[idx]
+      eventFillMailReplay(emails[idx])
 
 
     },

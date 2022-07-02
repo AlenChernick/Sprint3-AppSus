@@ -1,8 +1,8 @@
-import { utilService } from "../../../services/util.service.js" 
+import { utilService } from "../../../services/util.service.js"
 import { eventBus } from "../../../services/eventBus.service.js"
 
-
 export default {
+  props: ["sendEmail"],
   name: "compose-mail",
   emits: ["sended", "canceled"],
   template: `
@@ -77,11 +77,11 @@ export default {
     return {
       mailToSend: {
         name: "me",
-        to: '',
+        to: "",
         cc: null,
         bbc: null,
-        subject: '',
-        body: '',
+        subject: "",
+        body: "",
         createdAt: utilService.getFormattedNowDate(),
         isRead: true,
         state: "sent",
@@ -94,16 +94,17 @@ export default {
   created() {
     eventBus.on("eventFillMailReplay", this.eventFillMailReplay) //iniialize event listener
 
-  },
-  methods: {
-    eventFillMailReplay(email){
-console.log(email);
+    if (this.sendEmail) {
+      this.mailToSend.name = this.sendEmail.name + '@gmail.com'
+      this.mailToSend.subject =  this.sendEmail.subject 
+      this.mailToSend.body = '<--------   ' + this.sendEmail.body + '   -------->'
     }
   },
+  methods: {
+    eventFillMailReplay(email) {
+      console.log(email)
+    },
+  },
   computed: {},
-  unmounted() { },
+  unmounted() {},
 }
-// eventBus.on("replatMail", this.respondMail) //iniialize event listener
-// respondMail() {
-//   console.log("respondMail index")
-// },
