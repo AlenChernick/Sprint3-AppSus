@@ -1,4 +1,4 @@
-import { eventDeleteNote, eventUpdateNote } from '../../../services/eventBus.service.js'
+import { eventDeleteNote, eventUpdateNote, eventAddNote } from '../../../services/eventBus.service.js'
 import noteColorSelect from '../cmps/note-color-select.cmp.js'
 
 export default {
@@ -12,6 +12,7 @@ export default {
         </div>
         <!-- <button class="note-menu-email-btn" @click="sendToEmail"><i class="fa-solid fa-envelope"></i></button> -->
         <button class="note-menu-btn note-menu-edit-btn" @click="editNote"><i class="fa-solid fa-pen-to-square"></i></button> 
+        <button class="note-menu-btn note-menu-clone0-btn" @click="duplicateNote"><i class="fa-solid fa-clone"></i></button>
         <button class="note-menu-btn note-menu-trash-btn" @click="deleteNote"><i class="fa-solid fa-trash"></i></button>
         </section>
     `,
@@ -36,6 +37,10 @@ export default {
         },
         editNote() {
             this.$emit('openNoteEdit')
+        },
+        duplicateNote() {
+            const newNote = JSON.parse(JSON.stringify(this.note))
+            eventAddNote(newNote)
         }
     },
     computed: {

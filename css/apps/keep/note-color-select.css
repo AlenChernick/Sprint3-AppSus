@@ -5,12 +5,14 @@
   opacity: 0;
   transition: opacity 0.2s;
   padding-top: 0.5rem;
+  background-color: rgba(195, 195, 195, 0.903);
+  padding: 0.5rem;
 }
 
 .note-menu-color-btn-container:hover > .note-color-select {
   opacity: 1;
   position: absolute;
-  transform: translateX(-25%);
+  transform: translateY(-205%) translateX(-18%);
 }
 
 .note-colors-palette {
