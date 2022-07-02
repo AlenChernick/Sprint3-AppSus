@@ -47,6 +47,13 @@ export default {
         sentToMail() {
             const newNote = JSON.parse(JSON.stringify(this.note))
             let emailBody = newNote.info[newNote.noteType]
+            if (newNote.noteType === 'todos') {
+                emailBody = newNote.info.title + ' '
+                let todosTxt = newNote.info.todos.map((todo, idx) => {
+                    return idx + 1 + '. ' + todo.txt + '. '
+                }).join('')
+                emailBody += todosTxt
+            }
             const email = {
                 id: utilService.makeId(),
                 name: 'KeepApp',
