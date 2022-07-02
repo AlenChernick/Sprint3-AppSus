@@ -51,7 +51,9 @@ export function eventUpdateNote(note) {
     emit('eventUpdateNote', note)
 }
 
-
+export function eventSentNoteToMail(note) {
+    emit('eventSendNoteToMail', note)
+}
 
 
 
@@ -87,16 +89,16 @@ export function draftPage() {
 
 //Chenge filter
 export function addStar(emailId) {
-    emit('addStar',emailId)
+    emit('addStar', emailId)
 }
-export function updateUnRead(emailId){
-    emit('updateUnRead',emailId)
+export function updateUnRead(emailId) {
+    emit('updateUnRead', emailId)
 }
 
-export function closeExtendForUnread(){
+export function closeExtendForUnread() {
     emit('closeExtendForUnread')
 }
-export function respondMail(emailId){
+export function respondMail(emailId) {
     console.log('respondMail');
-    emit('respondMail',emailId)
+    emit('respondMail', emailId)
 }
