@@ -1,6 +1,7 @@
 import { utilService } from "../../../services/util.service.js"
 import { storageService } from "../../../services/storage.service.js"
 import { asyncStorageService } from "../../../services/async-storage.service.js"
+import updateNoteInMail from "../../mail/pages/mail-index.cmp.js"
 
 const MAIL_KEY = "mail_db"
 
@@ -14,6 +15,7 @@ export const mailService = {
   getSendedMails,
   updateIsStar,
   updateIsUnRead,
+  getMailFromNote
   // _initEmails////////////////////////////////////////////////////////////
 }
 function getMails() {
@@ -42,8 +44,8 @@ function updateIsRead(emailId) {
   return newArr
 }
 
-function updateIsUnRead(emailId){
-  console.log('unread')
+function updateIsUnRead(emailId) {
+  // console.log('unread')
   const idx = mails.findIndex((email) => email.id === emailId)
   mails[idx].isRead = false
   storageService.store(MAIL_KEY, mails)
@@ -52,7 +54,7 @@ function updateIsUnRead(emailId){
   return newArr
 }
 
-function updateIsStar(emailId){
+function updateIsStar(emailId) {
   const idx = mails.findIndex((email) => email.id === emailId)
   mails[idx].isStar = !mails[idx].isStar
   storageService.store(MAIL_KEY, mails)
@@ -63,9 +65,7 @@ function updateIsStar(emailId){
 }
 
 function saveMail(mail) {
-  return  save(mail)
-
-
+  return save(mail)
 }
 
 function save(mails) {
@@ -73,16 +73,21 @@ function save(mails) {
 
 }
 
+function getMailFromNote(mail) {
+  const mailFromNote = saveMail(mail)
+  updateNoteInMail(mailFromNote)
+}
+
 
 
 function _initEmails() {
-  const names = ['Alon','Dor','Yael','Sarit','Alen','Guy','Yuval',
-  'Denis','Kai','Alon','Dor','Yael','Sarit','Alen',
-  'Guy','Yuval','Denis','Kai','Rami', 'Oz', 'Guy', 'Ran', 'Daniel', 
-  'Yaron', 'Nadav', 'Omer', 'Rami', 'Daniel', 'Yaron', 'Nadav', 'Omer']
-  let emails = names.map(name=>_createMails(name))
+  const names = ['Alon', 'Dor', 'Yael', 'Sarit', 'Alen', 'Guy', 'Yuval',
+    'Denis', 'Kai', 'Alon', 'Dor', 'Yael', 'Sarit', 'Alen',
+    'Guy', 'Yuval', 'Denis', 'Kai', 'Rami', 'Oz', 'Guy', 'Ran', 'Daniel',
+    'Yaron', 'Nadav', 'Omer', 'Rami', 'Daniel', 'Yaron', 'Nadav', 'Omer']
+  let emails = names.map(name => _createMails(name))
   const flagsMails = getMailsWithFlags()
-  emails=emails.concat(flagsMails)
+  emails = emails.concat(flagsMails)
   emails[2].isStar = true
   emails[5].isStar = true
   emails[7].isStar = true
@@ -90,147 +95,147 @@ function _initEmails() {
   emails[5].isRead = true
   emails[8].isRead = true
   storageService.store(MAIL_KEY, emails)
-  console.log(emails);
+  // console.log(emails);
 
   return emails
 }
 
 
 function _createMails(name) {
-  
+
   return {
-          id: utilService.makeId(),
-          name:name,
-          subject:utilService.makeLorem(utilService.getRandom(7, 20)),
-          body:  utilService.makeLorem(utilService.getRandom(100, 650)),
-          createdAt: utilService.getFormattedNowDate(),
-          isRead: false,
-          state: 'inbox',
-          to: null,
-          cc: null,
-          bbc: null,
-          isStar: false,
-       }
-       
-
-      }
-  
-  function getMailsWithFlags(){
-
- const templeate =[  {
-          id: utilService.makeId(),
-          name: "Alen",
-          subject: utilService.makeLorem(utilService.getRandom(7, 20)),
-          body:  utilService.makeLorem(utilService.getRandom(100, 650)),
-          to: "Alen@momo.com",
-          createdAt: utilService.getFormattedNowDate(),
-          isRead: false,
-          state: 'sent',
-          cc: null,
-          bbc: null,
-          isStar: false,
-        }
-        ,
-        {
-          id: utilService.makeId(),
-          name: "Alon",
-          subject: utilService.makeLorem(utilService.getRandom(7, 20)),
-          body:  utilService.makeLorem(utilService.getRandom(100, 650)),
-          to: "Alon@momo.com",
-          createdAt: "2021-02-23",
-          isRead: true,
-          state: 'sent',
-          cc: null,
-          bbc: null,
-          isStar: true,
-        },
-        {
-          id: utilService.makeId(),
-          name: "Sharon",
-          subject: utilService.makeLorem(utilService.getRandom(7, 20)),
-          body:  utilService.makeLorem(utilService.getRandom(100, 650)),
-          to: "momo@momo.com",
-          createdAt: "2022-05-7",
-          isRead: false,
-          state: 'draft',
-          to: null,
-          cc: null,
-          bbc: null,
-          isStar: false,
-        },
-        {
-          id: utilService.makeId(),
-          name: "Yaron",
-          subject: utilService.makeLorem(utilService.getRandom(7, 20)),
-          body:  utilService.makeLorem(utilService.getRandom(100, 650)),
-          to: "momo@momo.com",
-          createdAt: "2022-06-2",
-          isRead: true,
-          state: 'draft',
-          to: null,
-          cc: null,
-          bbc: null,
-          isStar: true,
-        },
-        {
-          id: utilService.makeId(),
-          name: "James",
-          subject: utilService.makeLorem(utilService.getRandom(7, 20)),
-          body:  utilService.makeLorem(utilService.getRandom(100, 650)),
-          to: "momo@momo.com",
-          createdAt: "2021-02-23",
-          isRead: true,
-          state: 'draft',
-          to: null,
-          cc: null,
-          bbc: null,
-          isStar: false,
-        },  {
-          id: utilService.makeId(),
-          name: "Mor",
-          subject: utilService.makeLorem(utilService.getRandom(7, 20)),
-          body:  utilService.makeLorem(utilService.getRandom(100, 650)),
-          to: "momo@momo.com",
-          createdAt: "2022-02-07",
-          isRead: false,
-          state: 'draft',
-          to: null,
-          cc: null,
-          bbc: null,
-          isStar: false,
-        },
-        {
-          id: utilService.makeId(),
-          name: "Eli",
-          subject: utilService.makeLorem(utilService.getRandom(7, 20)),
-          body:  utilService.makeLorem(utilService.getRandom(100, 650)),
-          to: "momo@momo.com",
-          createdAt: "2022-06-02",
-          isRead: true,
-          state: 'inbox',
-          to: null,
-          cc: null,
-          bbc: null,
-          isStar: true,
-        },
-        {
-          id: utilService.makeId(),
-          name: "Redael",
-          subject: utilService.makeLorem(utilService.getRandom(7, 20)),
-          body:  utilService.makeLorem(utilService.getRandom(100, 650)),
-          to: "momo@momo.com",
-          createdAt: "2020-02-03",
-          isRead: true,
-          state: 'inbox',
-          to: null,
-          cc: null,
-          bbc: null,
-          isStar: true,
-        }]
-        return templeate
-      
-    
+    id: utilService.makeId(),
+    name: name,
+    subject: utilService.makeLorem(utilService.getRandom(7, 20)),
+    body: utilService.makeLorem(utilService.getRandom(100, 650)),
+    createdAt: utilService.getFormattedNowDate(),
+    isRead: false,
+    state: 'inbox',
+    to: null,
+    cc: null,
+    bbc: null,
+    isStar: false,
   }
+
+
+}
+
+function getMailsWithFlags() {
+
+  const templeate = [{
+    id: utilService.makeId(),
+    name: "Alen",
+    subject: utilService.makeLorem(utilService.getRandom(7, 20)),
+    body: utilService.makeLorem(utilService.getRandom(100, 650)),
+    to: "Alen@momo.com",
+    createdAt: utilService.getFormattedNowDate(),
+    isRead: false,
+    state: 'sent',
+    cc: null,
+    bbc: null,
+    isStar: false,
+  }
+    ,
+  {
+    id: utilService.makeId(),
+    name: "Alon",
+    subject: utilService.makeLorem(utilService.getRandom(7, 20)),
+    body: utilService.makeLorem(utilService.getRandom(100, 650)),
+    to: "Alon@momo.com",
+    createdAt: "2021-02-23",
+    isRead: true,
+    state: 'sent',
+    cc: null,
+    bbc: null,
+    isStar: true,
+  },
+  {
+    id: utilService.makeId(),
+    name: "Sharon",
+    subject: utilService.makeLorem(utilService.getRandom(7, 20)),
+    body: utilService.makeLorem(utilService.getRandom(100, 650)),
+    to: "momo@momo.com",
+    createdAt: "2022-05-7",
+    isRead: false,
+    state: 'draft',
+    to: null,
+    cc: null,
+    bbc: null,
+    isStar: false,
+  },
+  {
+    id: utilService.makeId(),
+    name: "Yaron",
+    subject: utilService.makeLorem(utilService.getRandom(7, 20)),
+    body: utilService.makeLorem(utilService.getRandom(100, 650)),
+    to: "momo@momo.com",
+    createdAt: "2022-06-2",
+    isRead: true,
+    state: 'draft',
+    to: null,
+    cc: null,
+    bbc: null,
+    isStar: true,
+  },
+  {
+    id: utilService.makeId(),
+    name: "James",
+    subject: utilService.makeLorem(utilService.getRandom(7, 20)),
+    body: utilService.makeLorem(utilService.getRandom(100, 650)),
+    to: "momo@momo.com",
+    createdAt: "2021-02-23",
+    isRead: true,
+    state: 'draft',
+    to: null,
+    cc: null,
+    bbc: null,
+    isStar: false,
+  }, {
+    id: utilService.makeId(),
+    name: "Mor",
+    subject: utilService.makeLorem(utilService.getRandom(7, 20)),
+    body: utilService.makeLorem(utilService.getRandom(100, 650)),
+    to: "momo@momo.com",
+    createdAt: "2022-02-07",
+    isRead: false,
+    state: 'draft',
+    to: null,
+    cc: null,
+    bbc: null,
+    isStar: false,
+  },
+  {
+    id: utilService.makeId(),
+    name: "Eli",
+    subject: utilService.makeLorem(utilService.getRandom(7, 20)),
+    body: utilService.makeLorem(utilService.getRandom(100, 650)),
+    to: "momo@momo.com",
+    createdAt: "2022-06-02",
+    isRead: true,
+    state: 'inbox',
+    to: null,
+    cc: null,
+    bbc: null,
+    isStar: true,
+  },
+  {
+    id: utilService.makeId(),
+    name: "Redael",
+    subject: utilService.makeLorem(utilService.getRandom(7, 20)),
+    body: utilService.makeLorem(utilService.getRandom(100, 650)),
+    to: "momo@momo.com",
+    createdAt: "2020-02-03",
+    isRead: true,
+    state: 'inbox',
+    to: null,
+    cc: null,
+    bbc: null,
+    isStar: true,
+  }]
+  return templeate
+
+
+}
   // const genericMails = [
   //   {
   //     id: utilService.makeId(),

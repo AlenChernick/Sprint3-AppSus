@@ -52,6 +52,7 @@ export function eventUpdateNote(note) {
 }
 
 export function eventSentNoteToMail(note) {
+    console.log('eventSentNoteToMail event bus');
     emit('eventSendNoteToMail', note)
 }
 
