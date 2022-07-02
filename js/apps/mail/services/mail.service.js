@@ -1,6 +1,8 @@
+import { eventSendMailToNote } from "../../../services/eventBus.service.js"
 import { utilService } from "../../../services/util.service.js"
 import { storageService } from "../../../services/storage.service.js"
 import { asyncStorageService } from "../../../services/async-storage.service.js"
+import  { noteService  } from "../../keep/services/note.service.js"
 
 const MAIL_KEY = "mail_db"
 
@@ -14,8 +16,8 @@ export const mailService = {
   getSendedMails,
   updateIsStar,
   updateIsUnRead,
-  getMailFromNote
-  // _initEmails////////////////////////////////////////////////////////////
+  getMailFromNote,
+  sendMailToNotes,
 }
 function getMails() {
   return Promise.resolve(mails)
@@ -76,6 +78,33 @@ function getMailFromNote(mail) {
   saveMail(mail)
 }
 
+function sendMailToNotes(emailId){
+  const idx = mails.findIndex((email) => email.id === emailId)
+  const currEmail = mails[idx]
+  const newNote = {
+    type: 'noteText',
+    noteType: 'txt',
+    isPinned: noteInfo.isPinned,
+    info: {
+        img: '',
+        title: '',
+        video: '',
+        txt:  currEmail.body,
+        todos: ''
+    },
+    style: {
+        backgroundColor: utilService.getRandomColor()
+    }
+}
+
+
+
+  // console.log('sendMailToNotes')
+  noteService.createNote(note)
+eventSendMailToNote(note)
+  console.log('sendMailToNotes')
+
+}
 
 
 function _initEmails() {

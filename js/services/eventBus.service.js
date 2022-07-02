@@ -86,3 +86,6 @@ export function respondMail(emailId) {
     emit('respondMail', emailId)
 }
 
+export function eventSendMailToNote(mail) {
+    emit('eventSendMailToNote', mail)
+}

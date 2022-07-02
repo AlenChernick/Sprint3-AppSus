@@ -1,5 +1,3 @@
-// import {filterTxt} from "../../../services/eventBus.service.js"
-import { eventBus } from "../../../services/eventBus.service.js"
 
 export default {
   template: `
@@ -27,7 +25,6 @@ export default {
   },
   methods: {
     onFilterby() {
-      //   filterTxt("filterTxt", this.text)
       const filterBy={
         read:this.read,
         txt:this.txt || 'all',

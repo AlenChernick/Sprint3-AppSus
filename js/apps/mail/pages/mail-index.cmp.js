@@ -59,7 +59,7 @@ export default {
   methods: {
 
     updateMailFromNote(email) {
-      this.emails.push(email)
+      this.emails.unshift(email)
     },
 
     onDeleteMail(emailId) {
