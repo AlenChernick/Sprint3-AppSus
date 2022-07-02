@@ -29,6 +29,8 @@ methods: {
     },
     onSendMailToNotes(emailId){
         mailService.sendMailToNotes(emailId)
+        this.$smit('showOptions')
+       
     }
 },
 computed: {},
