@@ -74,8 +74,7 @@ function save(mails) {
 }
 
 function getMailFromNote(mail) {
-  const mailFromNote = saveMail(mail)
-  updateNoteInMail(mailFromNote)
+  saveMail(mail)
 }
 
 
